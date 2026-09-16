@@ -155,6 +155,7 @@ document.addEventListener('keydown', function (e) {
   var tag = (e.target && e.target.tagName) || '';
   if (/^(INPUT|SELECT|TEXTAREA)$/.test(tag)) return;
   if (!modalEl || !modalEl.hidden) return;
+  if (window.DpayYT && window.DpayYT.isOpen()) return;  // پنجرهٔ ویدیو باز است
   var step = stepH(), t = within();
   if (t < -60 || t > N * step + 60) return;             // دک در دید نیست
   var cur = curIdx();
