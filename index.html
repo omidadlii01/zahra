@@ -8,8 +8,10 @@
 <title>D-pay — ارائه تعاملی درگاه پرداخت غیرمتمرکز</title>
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/css/ai.css">
 </head>
 <body>
+<a class="skip-link" href="#deck">پرش به ارائه</a>
 
 <!-- ═══════════════ پیمانه سایت (فعال بعد از پرده اول) ═══════════════ -->
 <header class="site-nav" id="siteNav">
@@ -28,13 +30,14 @@
     <a href="#lab" data-scroll>آزمایشگاه اوراکل</a>
     <a href="#integrate" data-scroll>یکپارچه‌سازی</a>
     <a href="#merchant" data-scroll>پنل پذیرنده</a>
+    <a href="#faq" data-scroll>سؤالات متداول</a>
     <a href="#wrapup" data-scroll>جمع‌بندی</a>
   </nav>
 </header>
 
 <!-- ═══════════════ پرده اول — دک ارائه سینمایی (۱۳ صحنه) ═══════════════ -->
 <main>
-<section class="deck" id="deck" aria-label="ارائه تعاملی D-pay">
+<section class="deck" id="deck" tabindex="-1" aria-label="ارائه تعاملی D-pay">
   <div class="deck-stage" id="deckStage">
 
     <!-- شیشه کروم بالای صحنه -->
@@ -563,6 +566,104 @@ Content-Type: application/json
     </div>
   </div>
 
+
+  <!-- سؤالات متداول -->
+  <div class="section" id="faq">
+    <div class="section__in">
+      <header class="sec-head" data-reveal>
+        <p class="sec-eyebrow">D-PAY WEBPAYMENT GATEWAY</p>
+        <h2 class="sec-title">سؤالات متداول پذیرندگان و تیم فنی</h2>
+        <p class="sec-lead">همهٔ پاسخ‌های این بخش، عیناً از متن همین ارائهٔ شش‌اسلایدی است؛ پاسخ هر پرسش را با یک کلیک از دستیار هوشمند هم بخواهید.</p>
+      </header>
+
+      <div class="faq-tools card" data-reveal>
+        <div class="faq-tools__search">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m20 20-4.4-4.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          <input id="faqSearch" type="search" placeholder="جستجو در پرسش‌ها…" aria-label="جستجو در پرسش‌ها">
+        </div>
+        <div class="faq-tools__cats" role="group" aria-label="دسته‌بندی پرسش‌ها">
+          <button type="button" class="is-on" data-cat="all">همه</button>
+          <button type="button" data-cat="privacy">حریم خصوصی و ورود</button>
+          <button type="button" data-cat="money">پرداخت، امنیت و برداشت</button>
+          <button type="button" data-cat="nets">شبکه‌ها و ارزها</button>
+          <button type="button" data-cat="setup">ساخت فروشگاه</button>
+          <button type="button" data-cat="integ">یکپارچه‌سازی</button>
+        </div>
+      </div>
+
+      <div class="faq-list" data-reveal id="faqList">
+        <details class="faq-item" data-cat="privacy">
+          <summary><span class="faq-q">برای ورود و شروع پذیرش، احراز هویت یا KYC لازم است؟</span><span class="faq-tag">اسلاید ۲</span></summary>
+          <div class="faq-a"><p><b>احراز هویت Web3 (بدون KYC)</b> — ورود فقط با متامسک، ولت‌کانکت یا اسکن QR Code. عدم نیاز به ارائه مدارک هویتی برای شروع پذیرش رمزارز.</p><div class="faq-a__foot"><button type="button" class="btn btn--soft faq-ask" data-q="آیا برای شروع کار با D-pay احراز هویت یا KYC لازم است؟">پرسیدن از دستیار</button></div></div>
+        </details>
+        <details class="faq-item" data-cat="privacy">
+          <summary><span class="faq-q">حریم خصوصی من و خریدارم حفظ می‌شود؟</span><span class="faq-tag">اسلاید ۲</span></summary>
+          <div class="faq-a"><p>حفظ کامل محرمانگی هویت پذیرنده و خریدار (بدون ایمیل و پسورد).</p><div class="faq-a__foot"><button type="button" class="btn btn--soft faq-ask" data-q="حریم خصوصی در D-pay چگونه حفظ می‌شود؟">پرسیدن از دستیار</button></div></div>
+        </details>
+        <details class="faq-item" data-cat="privacy">
+          <summary><span class="faq-q">برای ساخت فروشگاه هم باید ولت را تایید کنم؟</span><span class="faq-tag">اسلاید ۲ · ۴</span></summary>
+          <div class="faq-a"><p><b>ساخت فروشگاه:</b> تایید ولت فقط در لاگین است و ساخت فروشگاه نیازی به ولت ندارد.</p><div class="faq-a__foot"><button type="button" class="btn btn--soft faq-ask" data-q="ساخت فروشگاه در D-pay نیاز به تایید ولت دارد؟">پرسیدن از دستیار</button></div></div>
+        </details>
+        <details class="faq-item" data-cat="money">
+          <summary><span class="faq-q">چطور از خطای پرداخت، آدرس جعلی و بدافزارهای کلیپ‌بورد جلوگیری می‌شود؟</span><span class="faq-tag">اسلاید ۲</span></summary>
+          <div class="faq-a"><p>مکانیزم تایید هوشمند جهت جلوگیری از کپی دستی آدرس. محافظت کامل در برابر بدافزارهای کلیپ‌بورد (Clipboard Malware). بررسی موجودی، شبکه و مبلغ فاکتور پیش از کسر وجه.</p><div class="faq-a__foot"><button type="button" class="btn btn--soft faq-ask" data-q="مکانیزم Approve در برابر بدافزارهای کلیپ‌بورد چطور کار می‌کند؟">پرسیدن از دستیار</button></div></div>
+        </details>
+        <details class="faq-item" data-cat="money">
+          <summary><span class="faq-q">پول دریافتی تا برداشت کجا نگه‌داری می‌شود؟</span><span class="faq-tag">اسلاید ۲ · ۶</span></summary>
+          <div class="faq-a"><p><b>مدیریت درآمد:</b> مبالغ دریافتی در قرارداد هوشمند درگاه ذخیره می‌شوند. مبالغ دریافتی از خریداران در محیط امن قرارداد هوشمند درگاه باقی می‌ماند.</p><div class="faq-a__foot"><button type="button" class="btn btn--soft faq-ask" data-q="مبلغ فروش‌ها قبل از برداشت کجا ذخیره می‌شود؟">پرسیدن از دستیار</button></div></div>
+        </details>
+        <details class="faq-item" data-cat="money">
+          <summary><span class="faq-q">چه‌طور و چه‌زمانی می‌توانم برداشت کنم؟</span><span class="faq-tag">اسلاید ۲ · ۶</span></summary>
+          <div class="faq-a"><p>پذیرنده هر زمان که بخواهد می‌تواند از داخل پنل خود درخواست برداشت ثبت کند تا موجودی (مثلاً USDT روی شبکه BSC) مستقیماً به ولت شخصی او منتقل شود.</p><div class="faq-a__foot"><button type="button" class="btn btn--soft faq-ask" data-q="نحوه برداشت موجودی در پنل پذیرنده چطور است؟">پرسیدن از دستیار</button></div></div>
+        </details>
+        <details class="faq-item" data-cat="nets">
+          <summary><span class="faq-q">چه بلاک‌چین‌هایی پشتیبانی می‌شود؟</span><span class="faq-tag">اسلاید ۳</span></summary>
+          <div class="faq-a"><p>Ethereum (ETH): امنیت بالادستی و نقدینگی بالا · BNB Smart Chain (BSC): تراکنش‌های بسیار سریع با کارمزد پایین · Polygon (MATIC): مقیاس‌پذیری لایه دو اتریوم · Avalanche (AVAX): سازگاری کامل EVM و سرعت بالا · Arbitrum &amp; Optimism: پشتیبانی از رول‌آپ‌های لایه دوم · Fantom &amp; Harmony: انعطاف‌پذیری در پرداخت‌های بین‌المللی.</p><div class="faq-a__foot"><button type="button" class="btn btn--soft faq-ask" data-q="کدام شبکه‌های EVM در D-pay پشتیبانی می‌شوند؟">پرسیدن از دستیار</button></div></div>
+        </details>
+        <details class="faq-item" data-cat="nets">
+          <summary><span class="faq-q">چه ارزهایی قابل پذیرش است؟</span><span class="faq-tag">اسلاید ۳</span></summary>
+          <div class="faq-a"><p><b>پذیرش استیبل‌کوین‌ها:</b> پشتیبانی کامل از USDT، USDC، BUSD و DAI روی تمام شبکه‌های فعال. <b>رمزارزهای پایه:</b> پذیرش مستقیم اتریوم (ETH) و بیت‌کوین (BTC). پذیرنده تعیین می‌کند کدام ارزها و شبکه‌ها در فروشگاه فعال باشند.</p><div class="faq-a__foot"><button type="button" class="btn btn--soft faq-ask" data-q="چه ارزهایی را می‌توانم در فروشگاه فعال کنم؟">پرسیدن از دستیار</button></div></div>
+        </details>
+        <details class="faq-item" data-cat="nets">
+          <summary><span class="faq-q">قیمت دلاری سبد خرید چطور به کریپتو تبدیل می‌شود؟</span><span class="faq-tag">اسلاید ۳</span></summary>
+          <div class="faq-a"><p><b>اوراکل نرخ لحظه‌ای:</b> محاسبه خودکار و پویای معادل کریپتویی سبد خرید دلاری هنگام تسویه. خریدار قیمت فاکتور (مثلا ۲۰ دلار) را به صورت لحظه‌ای به معادل ارز انتخابی می‌بیند.</p><div class="faq-a__foot"><button type="button" class="btn btn--soft faq-ask" data-q="اوراکل نرخ لحظه‌ای چطور قیمت را به ارز دیجیتال تبدیل می‌کند؟">پرسیدن از دستیار</button></div></div>
+        </details>
+        <details class="faq-item" data-cat="setup">
+          <summary><span class="faq-q">ساخت فروشگاه چند مرحله دارد؟</span><span class="faq-tag">اسلاید ۴</span></summary>
+          <div class="faq-a"><p>مرحله ۱ ورود با ولت Web3 · مرحله ۲ افزودن فروشگاه · مرحله ۳ لیست سفید دامنه‌ها · مرحله ۴ دریافت Merchant Token. پیکربندی ارزهای فعال و دریافت Token / Code اختصاصی فروشگاه جهت اتصال به سایت.</p><div class="faq-a__foot"><button type="button" class="btn btn--soft faq-ask" data-q="مراحل ساخت فروشگاه در داشبورد D-pay را توضیح بده">پرسیدن از دستیار</button></div></div>
+        </details>
+        <details class="faq-item" data-cat="setup">
+          <summary><span class="faq-q">لیست سفید دامنه‌ها (Whitelist) چرا لازم است؟</span><span class="faq-tag">اسلاید ۴</span></summary>
+          <div class="faq-a"><p>وارد کردن دامنه‌های مجاز (Whitelist Domain) جهت امنیت فراخوانی API و جلوگیری از سوءاستفاده.</p><div class="faq-a__foot"><button type="button" class="btn btn--soft faq-ask" data-q="Whitelist Domain چه کاربردی در امنیت API دارد؟">پرسیدن از دستیار</button></div></div>
+        </details>
+        <details class="faq-item" data-cat="integ">
+          <summary><span class="faq-q">افزونهٔ ووکامرس دارید؟ چطور نصب می‌شود؟</span><span class="faq-tag">اسلاید ۵</span></summary>
+          <div class="faq-a"><p>۱. دریافت افزونه: دانلود فایل Zip افزونه رسمی D-pay WooCommerce. ۲. نصب در وردپرس: بارگذاری و فعال‌سازی افزونه در بخش افزونه‌های وردپرس. ۳. ورود به تنظیمات: مراجعه به پیکربندی درگاه در مسیر WooCommerce &gt; Settings &gt; Payments. ۴. جای‌گذاری Merchant Code: وارد کردن توکن فروشگاه و ذخیره‌سازی برای شروع پذیرش کریپتو.</p><div class="faq-a__foot"><button type="button" class="btn btn--soft faq-ask" data-q="مراحل نصب افزونه ووکامرس D-pay را مرحله به مرحله بگو">پرسیدن از دستیار</button></div></div>
+        </details>
+        <details class="faq-item" data-cat="integ">
+          <summary><span class="faq-q">جریان اتصال با REST API برای سیستم اختصاصی چطور است؟</span><span class="faq-tag">اسلاید ۵</span></summary>
+          <div class="faq-a"><p>1. POST /order/add: ارسال مبلغ، callback، شماره سفارش و merchant_code -&gt; دریافت کد ۲۰ و لینک درگاه. 2. هدایت خریدار به Callback: پس از پرداخت، درگاه خریدار را همراه کد اختصاصی Authority به آدرس Callback برمی‌گرداند. 3. POST /order/verify: ارسال کد Authority جهت تایید نهایی درگاه.</p><div class="faq-a__foot"><button type="button" class="btn btn--soft faq-ask" data-q="جریان یکپارچه‌سازی Web API با order/add و order/verify را توضیح بده">پرسیدن از دستیار</button></div></div>
+        </details>
+        <details class="faq-item" data-cat="integ">
+          <summary><span class="faq-q">کدهای وضعیت پاسخ استعلام یعنی چه؟</span><span class="faq-tag">اسلاید ۵</span></summary>
+          <div class="faq-a"><p>کد ۲۰ = پرداخت موفق، کد ۱۳ = ناموفق، کد ۲۱ = قبلا ثبت‌شده.</p><div class="faq-a__foot"><button type="button" class="btn btn--soft faq-ask" data-q="کدهای ۲۰، ۱۳ و ۱ در پاسخ استعلام به چه معنا هستند؟">پرسیدن از دستیار</button></div></div>
+        </details>
+        <details class="faq-item" data-cat="integ">
+          <summary><span class="faq-q">اگر سیستم من وردپرس نیست، ماژول سفارشی می‌سازید؟</span><span class="faq-tag">اسلاید ۵</span></summary>
+          <div class="faq-a"><p>ماژول‌های اختصاصی: امکان توسعه ماژول‌های سفارشی توسط تیم فنی D-pay برای سیستم‌های اختصاصی.</p><div class="faq-a__foot"><button type="button" class="btn btn--soft faq-ask" data-q="برای سیستم غیروردپرسی چه گزینه‌های یکپارچه‌سازی وجود دارد؟">پرسیدن از دستیار</button></div></div>
+        </details>
+        <details class="faq-item" data-cat="money">
+          <summary><span class="faq-q">خریدار در لحظهٔ پرداخت چه مراحلی را طی می‌کند؟</span><span class="faq-tag">اسلاید ۶</span></summary>
+          <div class="faq-a"><p>۱. انتخاب ارز/شبکه: خریدار ارز مورد نظر را در تسویه حساب انتخاب می‌کند. ۲. اتصال ولت: اتصال از طریق متامسک، ولت‌کانکت یا اسکن QR Code. ۳. تایید هوشمند (Approve): بررسی موجودی و تایید کسر دقیق مبلغ از ولت خریدار. ۴. تسویه آنی شبکه: تراکنش روی بلاک‌چین ثبت و سفارش نهایی می‌شود.</p><div class="faq-a__foot"><button type="button" class="btn btn--soft faq-ask" data-q="مراحل پرداخت برای خریدار را خلاصه بگو">پرسیدن از دستیار</button></div></div>
+        </details>
+        <details class="faq-item" data-cat="money">
+          <summary><span class="faq-q">از فروش‌ها گزارش لحظه‌ای دارم؟</span><span class="faq-tag">اسلاید ۶</span></summary>
+          <div class="faq-a"><p><b>گزارش‌گیری لحظه‌ای فروش‌ها:</b> مشاهده کامل سفارش‌ها، تراکنش‌های موفق و تاریخچه درآمدها در پنل پیشرفته پذیرنده.</p><div class="faq-a__foot"><button type="button" class="btn btn--soft faq-ask" data-q="گزارش‌های فروش در پنل پذیرنده چه چیزهایی را نشان می‌دهد؟">پرسیدن از دستیار</button></div></div>
+        </details>
+        <p class="faq-empty" id="faqEmpty">موردی با این جستجو پیدا نشد؛ می‌توانید سؤال را از دستیار بپرسید.</p>
+      </div>
+    </div>
+  </div>
   <!-- جمع‌بندی -->
   <div class="section section--end" id="wrapup">
     <div class="section__in">
@@ -650,8 +751,99 @@ Content-Type: application/json
   </div>
 </div>
 
+
+<!-- ═══════════════ دستیار صوتی D-pay (Gemini) ═══════════════ -->
+<button class="ai-fab" id="aiFab" type="button" aria-label="باز کردن دستیار D-pay" title="دستیار D-pay — پرسش متنی یا صوتی">
+  <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M12 15.5a3.5 3.5 0 0 0 3.5-3.5V6a3.5 3.5 0 0 0-7 0v6a3.5 3.5 0 0 0 3.5 3.5Z" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+  <span class="ai-fab__ring" aria-hidden="true"></span>
+</button>
+
+<div class="ai-panel" id="aiPanel" role="dialog" aria-label="دستیار هوشمند D-pay" hidden>
+  <header class="ai-panel__head">
+    <div class="ai-panel__id">
+      <svg class="brandmark" viewBox="0 0 64 64" width="26" height="26" aria-hidden="true">
+        <defs><linearGradient id="bmg3" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#38BDF8"/><stop offset="1" stop-color="#07C8DA"/></linearGradient></defs>
+        <path fill-rule="evenodd" fill="url(#bmg3)" d="M18 6h16c11 0 20 8.5 20 19s-9 19-20 19H18V6Zm8 8v22h8c6.6 0 12-4.6 12-11s-5.4-11-12-11h-8Z"/>
+        <path fill="url(#bmg3)" d="M1 58 14 38h16L17 58H1Z"/>
+      </svg>
+      <div>
+        <p class="ai-panel__title" id="aiTitle">دستیار D-pay</p>
+        <p class="ai-panel__sub" id="aiStatus">آمادهٔ پرسش</p>
+      </div>
+    </div>
+    <div class="ai-panel__tools">
+      <button type="button" id="aiVoice" class="ai-icbtn is-on" aria-pressed="true" title="پاسخ‌های صوتی روشن/خاموش" aria-label="پاسخ‌های صوتی">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M4 9.5v5a1 1 0 0 0 1 1h2.6l4.4 3.4V6.1L7.6 9.5H5a1 1 0 0 0-1 1ZM16 9.4a3.6 3.6 0 0 1 0 5.2M18.3 7.2a6.7 6.7 0 0 1 0 9.6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button type="button" id="aiSettingsBtn" class="ai-icbtn" title="تنظیمات و رفتار دستیار" aria-label="تنظیمات">
+        <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="12" cy="12" r="3.2" fill="none" stroke="currentColor" stroke-width="1.7"/><path d="M12 3.5v2m0 13v2m8.5-8.5h-2m-13 0h-2m14.2-5.7-1.4 1.4M7.1 16.3l-1.4 1.4m12.6 0-1.4-1.4M7.1 7.1 5.7 5.7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+      </button>
+      <button type="button" id="aiClose" class="ai-icbtn" title="بستن" aria-label="بستن دستیار">✕</button>
+    </div>
+  </header>
+
+  <div class="ai-msgs" id="aiMsgs" role="log" aria-live="polite"></div>
+
+  <div class="ai-quick" id="aiQuick">
+    <button type="button">آیا KYC لازم است؟</button>
+    <button type="button">کدام شبکه‌ها و ارزها؟</button>
+    <button type="button">برداشت چطور انجام می‌شود؟</button>
+  </div>
+
+  <div class="ai-compose">
+    <button type="button" class="ai-mic" id="aiMic" aria-label="پرسش صوتی" title="شروع/توقف گفتار">
+      <svg viewBox="0 0 24 24" width="21" height="21" aria-hidden="true"><path d="M12 14.5a3 3 0 0 0 3-3V6.5a3 3 0 0 0-6 0V11.5a3 3 0 0 0 3 3Z" fill="currentColor"/><path d="M5.8 11a6.2 6.2 0 0 0 12.4 0M12 17.5V20m-3 0h6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+    </button>
+    <input id="aiInput" type="text" placeholder="سؤال خود را بپرسید…" aria-label="متن سؤال" autocomplete="off">
+    <button type="button" class="ai-send" id="aiSend" aria-label="ارسال" title="ارسال">
+      <svg viewBox="0 0 24 24" width="19" height="19" aria-hidden="true"><path d="M11 19 4 5l16 6-7 2-2 6Z" fill="currentColor"/></svg>
+    </button>
+  </div>
+  <p class="ai-note" id="aiNote"></p>
+
+  <div class="ai-settings" id="aiSettings" hidden>
+    <p class="ai-settings__t">تنظیمات و رفتار دستیار <button type="button" class="ai-icbtn" id="aiSettingsClose" aria-label="بستن تنظیمات">✕</button></p>
+    <div class="ai-settings__grid">
+      <label class="ai-field"><span>مدل</span>
+        <select id="setModel">
+          <option value="gemini-2.5-flash">Gemini 2.5 Flash — پیش‌فرض</option>
+          <option value="gemini-2.5-pro">Gemini 2.5 Pro — دقیق‌تر</option>
+          <option value="gemini-2.0-flash">Gemini 2.0 Flash — سریع</option>
+        </select>
+      </label>
+      <label class="ai-field"><span>شخصیت پاسخ‌گویی</span>
+        <select id="setPersona">
+          <option value="guide">راهنمای صمیمی (پیش‌فرض)</option>
+          <option value="formal">دقیق و رسمی</option>
+          <option value="voice">کوتاه، مخصوص مکالمه صوتی</option>
+        </select>
+      </label>
+      <label class="ai-field"><span>سرعت گفتار <b id="rateV">۱٫۰×</b></span>
+        <input type="range" id="setRate" min="0.7" max="1.3" step="0.05" value="1">
+      </label>
+      <label class="ai-field"><span>حساسیت فیلترها</span>
+        <select id="setSafety">
+          <option value="off">پیش‌فرض گوگل</option>
+          <option value="strict">سخت‌گیرانه (BLOCK_LOW_AND_ABOVE)</option>
+        </select>
+      </label>
+      <label class="ai-check"><input type="checkbox" id="setGround"><span>پاسخ فقط بر اساس متن ارائه (Grounding سخت)</span></label>
+      <label class="ai-field ai-field--full"><span>کلید API ژمنای (روی همین دستگاه ذخیره می‌شود)</span>
+        <div class="ai-keyrow">
+          <input type="password" id="setKey" placeholder="AIza…" dir="ltr" autocomplete="off">
+          <button type="button" class="btn btn--soft" id="setKeySave">ذخیره</button>
+          <button type="button" class="btn btn--ghost" id="setKeyDel">حذف</button>
+        </div>
+      </label>
+    </div>
+    <p class="ai-settings__status" id="setStatus"></p>
+    <button type="button" class="btn btn--ghost ai-settings__clear" id="aiClear">پاک کردن گفتگو</button>
+  </div>
+</div>
+
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script src="assets/js/main.js"></script>
+<script src="assets/js/ai.js"></script>
 </body>
 </html>
