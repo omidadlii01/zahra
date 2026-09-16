@@ -1,694 +1,633 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>D-pay | درگاه پرداخت غیرمتمرکز Web3</title>
-  <meta name="description" content="درگاه پرداخت غیرمتمرکز D-pay — راهنمای جامع پذیرندگان و یکپارچه‌سازی درگاه Web3: ورود با ولت، ساخت فروشگاه بدون تایید ولت، برداشت دستی، افزونه ووکامرس و REST API" />
-  <meta name="theme-color" content="#04070d" />
-  <meta property="og:title" content="D-pay | درگاه پرداخت غیرمتمرکز Web3" />
-  <meta property="og:description" content="ورود با ولت Web3 • ساخت فروشگاه بدون تایید ولت • برداشت دستی توسط پذیرنده • افزونه ووکامرس و REST API" />
-  <meta property="og:image" content="assets/img/hero-art.jpg" />
-  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
-  <link rel="preload" href="assets/fonts/peyda-black.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="assets/fonts/peyda-bold.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="assets/fonts/peyda-regular.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="assets/css/style.css" />
-  <noscript>
-    <style>
-      .reveal { opacity: 1 !important; transform: none !important; }
-      .preloader { display: none !important; }
-      #netCanvas { display: none !important; }
-    </style>
-  </noscript>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#04070D">
+<meta name="description" content="ارائه تعاملی D-pay — درگاه پرداخت غیرمتمرکز Web3؛ جایگزین وب‌محور فایل پاورپوینت dpay_presentation-v3">
+<title>D-pay — ارائه تعاملی درگاه پرداخت غیرمتمرکز</title>
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
-  <!-- ===== Preloader ===== -->
-  <div class="preloader" id="preloader" aria-hidden="true">
-    <div class="preloader-inner">
-      <div class="preloader-mark">
-        <svg viewBox="0 0 64 64" width="72" height="72" fill="none">
-          <rect x="2" y="2" width="60" height="60" rx="14" stroke="#07c8da" stroke-opacity=".3" stroke-width="2"/>
-          <path class="draw" d="M20 16h11c9.4 0 15 6.6 15 16s-5.6 16-15 16H20V16z" stroke="#07c8da" stroke-width="3.5" stroke-linejoin="round"/>
-          <circle cx="47" cy="45" r="3.4" fill="#f59e0b"/>
+<!-- ═══════════════ پیمانه سایت (فعال بعد از پرده اول) ═══════════════ -->
+<header class="site-nav" id="siteNav">
+  <a class="site-nav__brand" href="#deck" data-scroll>
+    <svg class="brandmark" viewBox="0 0 64 64" width="30" height="30" aria-hidden="true">
+      <defs><linearGradient id="bmg" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#38BDF8"/><stop offset="1" stop-color="#07C8DA"/>
+      </linearGradient></defs>
+      <path d="M32 4 55 17v30L32 60 9 47V17Z" fill="none" stroke="url(#bmg)" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M24 21h10c6 0 10 4.4 10 11s-4 11-10 11H24Z" fill="url(#bmg)"/>
+      <path d="M20 21h-1v22h1" stroke="url(#bmg)" stroke-width="3.4" stroke-linecap="round"/>
+    </svg>
+    <span class="site-nav__word">D-pay</span>
+  </a>
+  <nav class="site-nav__links" aria-label="پیمایش بخش‌ها">
+    <a href="#deck" data-scroll>ارائه</a>
+    <a href="#lab" data-scroll>آزمایشگاه اوراکل</a>
+    <a href="#integrate" data-scroll>یکپارچه‌سازی</a>
+    <a href="#merchant" data-scroll>پنل پذیرنده</a>
+    <a href="#wrapup" data-scroll>جمع‌بندی</a>
+  </nav>
+</header>
+
+<!-- ═══════════════ پرده اول — دک ارائه سینمایی (۱۳ صحنه) ═══════════════ -->
+<main>
+<section class="deck" id="deck" aria-label="ارائه تعاملی D-pay">
+  <div class="deck-stage" id="deckStage">
+
+    <!-- شیشه کروم بالای صحنه -->
+    <div class="deck-topbar">
+      <div class="deck-brand">
+        <svg class="brandmark" viewBox="0 0 64 64" width="34" height="34" aria-hidden="true">
+          <defs><linearGradient id="bmg2" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#38BDF8"/><stop offset="1" stop-color="#07C8DA"/>
+          </linearGradient></defs>
+          <path d="M32 4 55 17v30L32 60 9 47V17Z" fill="none" stroke="url(#bmg2)" stroke-width="4" stroke-linejoin="round"/>
+          <path d="M24 21h10c6 0 10 4.4 10 11s-4 11-10 11H24Z" fill="url(#bmg2)"/>
+          <path d="M20 21h-1v22h1" stroke="url(#bmg2)" stroke-width="3.4" stroke-linecap="round"/>
         </svg>
+        <span class="deck-brand__txt">D-pay<em>WEBPAYMENT GATEWAY</em></span>
       </div>
-      <div class="preloader-word latin">D-pay</div>
-      <div class="preloader-sub">درگاه پرداخت غیرمتمرکز</div>
-      <div class="preloader-bar"><span id="preloaderFill"></span></div>
-      <div class="preloader-pct latin" id="preloaderPct">0%</div>
+
+      <div class="deck-ticks" role="group" aria-label="پرش به اسلایدها">
+        <button class="tick is-on" data-slide="1" data-target="0"  title="اسلاید ۱ — درگاه پرداخت غیرمتمرکز D-pay" aria-label="اسلاید ۱"></button>
+        <button class="tick" data-slide="2" data-target="2"  title="اسلاید ۲ — مزایای رقابتی و آخرین تغییرات سیستم" aria-label="اسلاید ۲"></button>
+        <button class="tick" data-slide="3" data-target="5"  title="اسلاید ۳ — پشتیبانی شبکه‌های چندگانه و اوراکل نرخ لحظه‌ای" aria-label="اسلاید ۳"></button>
+        <button class="tick" data-slide="4" data-target="7"  title="اسلاید ۴ — فرآیند ۴ مرحله‌ای ساخت فروشگاه" aria-label="اسلاید ۴"></button>
+        <button class="tick" data-slide="5" data-target="8"  title="اسلاید ۵ — روش‌های یکپارچه‌سازی" aria-label="اسلاید ۵"></button>
+        <button class="tick" data-slide="6" data-target="10" title="اسلاید ۶ — سفر پرداخت خریدار و برداشت پذیرنده" aria-label="اسلاید ۶"></button>
+      </div>
+
+      <div class="deck-count" aria-live="polite">
+        <span class="deck-count__slide" id="slideChip">اسلاید ۱</span>
+        <span class="deck-count__num"><b id="sceneNum">۰۱</b><i>/</i><span id="sceneTot">۱۳</span></span>
+      </div>
     </div>
-  </div>
 
-  <!-- ===== Scroll progress ===== -->
-  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+    <!-- پرده‌ها -->
+    <div class="deck-scenes" id="deckScenes">
 
-  <!-- ===== Cursor glow (desktop) ===== -->
-  <div class="cursor-glow" id="cursorGlow" aria-hidden="true"></div>
+      <!-- ۱) کاور -->
+      <section class="scene scene--cover" data-slide="1" style="--acc:#07C8DA">
+        <div class="scene-fit">
+          <p class="scene-kicker stg"><span class="k-slide">اسلاید ۱</span></p>
+          <h2 class="cover-title stg">درگاه پرداخت غیرمتمرکز <span class="grad">D-pay</span></h2>
+          <p class="cover-sub stg">راهنمای جامع پذیرندگان و یکپارچه‌سازی درگاه Web3 <span class="paren">(ویرایش جدید سیستم)</span></p>
+          <ul class="cover-tag stg" role="list">
+            <li>ورود با ولت Web3</li><li>ساخت فروشگاه بدون تایید ولت</li><li>برداشت دستی توسط پذیرنده</li><li>افزونه ووکامرس و REST API</li>
+          </ul>
+        </div>
+      </section>
 
-  <!-- ===== Header ===== -->
-  <header class="site-header" id="siteHeader">
-    <div class="container header-inner">
-      <a href="#hero" class="brand" aria-label="D-pay">
-        <svg viewBox="0 0 64 64" width="38" height="38" fill="none" aria-hidden="true">
-          <rect x="2" y="2" width="60" height="60" rx="14" fill="#04070d" stroke="#07c8da" stroke-opacity=".45" stroke-width="2"/>
-          <path d="M20 16h11c9.4 0 15 6.6 15 16s-5.6 16-15 16H20V16zm8 8v16h2.6c4.9 0 7.4-3.4 7.4-8s-2.5-8-7.4-8H28z" fill="#07c8da"/>
-          <circle cx="47" cy="45" r="3.4" fill="#f59e0b"/>
-        </svg>
-        <span class="brand-text">
-          <span class="brand-name latin">D-pay</span>
-          <span class="brand-tag">درگاه پرداخت Web3</span>
-        </span>
-      </a>
-      <nav class="main-nav" id="mainNav" aria-label="ناوبری اصلی">
-        <a href="#features" data-nav>مزایا</a>
-        <a href="#networks" data-nav>شبکه‌ها</a>
-        <a href="#setup" data-nav>راه‌اندازی</a>
-        <a href="#integration" data-nav>یکپارچه‌سازی</a>
-        <a href="#journey" data-nav>سفر خریدار</a>
-        <a href="#merchant" data-nav>پذیرنده</a>
-      </nav>
-      <div class="header-actions">
-        <a href="#merchant" class="btn btn-primary btn-sm magnetic"><span>شروع پذیرش</span></a>
-        <button class="nav-toggle" id="navToggle" aria-label="باز کردن منو" aria-expanded="false">
-          <span></span><span></span><span></span>
+      <!-- ۲) چهار قابلیت کلیدی اسلاید ۱ -->
+      <section class="scene scene--grid4" data-slide="1" style="--acc:#38BDF8" aria-hidden="true">
+        <div class="scene-fit">
+          <header class="scene-head stg">
+            <p class="scene-eyebrow"><span class="k-slide">اسلاید ۱</span>D-PAY WEBPAYMENT GATEWAY</p>
+            <h2 class="scene-title">درگاه پرداخت غیرمتمرکز <span class="grad">D-pay</span></h2>
+          </header>
+          <ul class="feature-grid" role="list">
+            <li class="fcard stg" style="--c:#07C8DA">
+              <span class="fcard__ic"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M3 7.5A2.5 2.5 0 0 1 5.5 5H17a1 1 0 0 1 1 1v1.5M3 7.5V18a2 2 0 0 0 2 2h14a1 1 0 0 0 1-1v-3M3 7.5h16.5a.5.5 0 0 1 .5.5V13a1 1 0 0 1-1 1H15a3 3 0 0 1 0-6h4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <p>ورود با ولت Web3</p><span class="fcard__no">۰۱</span>
+            </li>
+            <li class="fcard stg" style="--c:#38BDF8">
+              <span class="fcard__ic"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M4 9.5V19a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V9.5M3 9.5 5 4.5a1 1 0 0 1 1-.5h12a1 1 0 0 1 1 .5l2 5a2.75 2.75 0 0 1-5 1.4 2.75 2.75 0 0 1-4.75 0 2.75 2.75 0 0 1-4.75 0A2.75 2.75 0 0 1 3 9.5Z" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></span>
+              <p>ساخت فروشگاه بدون تایید ولت</p><span class="fcard__no">۰۲</span>
+            </li>
+            <li class="fcard stg" style="--c:#10B981">
+              <span class="fcard__ic"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M12 3v10m0 0 3.5-3.5M12 13 8.5 9.5M4 15v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <p>برداشت دستی توسط پذیرنده</p><span class="fcard__no">۰۳</span>
+            </li>
+            <li class="fcard stg" style="--c:#F59E0B">
+              <span class="fcard__ic"><svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path d="M9 3v4m6-4v4M7 7h10v4a5 5 0 0 1-10 0V7Zm5 9v5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <p>افزونه ووکامرس و REST API</p><span class="fcard__no">۰۴</span>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ۳) کارت ۱ اسلاید ۲ -->
+      <section class="scene scene--card" data-slide="2" style="--acc:#38BDF8" aria-hidden="true">
+        <div class="scene-fit">
+          <header class="scene-head stg">
+            <p class="scene-eyebrow"><span class="k-slide">اسلاید ۲</span>D-PAY WEBPAYMENT GATEWAY</p>
+            <h2 class="scene-sub">مزایای رقابتی و آخرین تغییرات سیستم <span class="paren">(آپدیت نسخه جدید)</span></h2>
+          </header>
+          <article class="bigcard stg" style="--c:#38BDF8">
+            <div class="bigcard__head">
+              <span class="bigcard__no">۰۱</span>
+              <p class="bigcard__label">ورود ناشناس</p>
+              <h3 class="bigcard__title">احراز هویت Web3 <span class="paren">(بدون KYC)</span></h3>
+            </div>
+            <ul class="bullets">
+              <li><span>ورود فقط با متامسک، ولت‌کانکت یا اسکن QR Code.</span></li>
+              <li><span>حفظ کامل محرمانگی هویت پذیرنده و خریدار <span class="paren">(بدون ایمیل و پسورد)</span>.</span></li>
+              <li><span>عدم نیاز به ارائه مدارک هویتی برای شروع پذیرش رمزارز.</span></li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- ۴) کارت ۲ اسلاید ۲ -->
+      <section class="scene scene--card" data-slide="2" style="--acc:#10B981" aria-hidden="true">
+        <div class="scene-fit">
+          <header class="scene-head stg">
+            <p class="scene-eyebrow"><span class="k-slide">اسلاید ۲</span>D-PAY WEBPAYMENT GATEWAY</p>
+            <h2 class="scene-sub">مزایای رقابتی و آخرین تغییرات سیستم <span class="paren">(آپدیت نسخه جدید)</span></h2>
+          </header>
+          <article class="bigcard stg" style="--c:#10B981">
+            <div class="bigcard__head">
+              <span class="bigcard__no">۰۲</span>
+              <p class="bigcard__label">حذف خطاهای پرداخت</p>
+              <h3 class="bigcard__title">امنیت قرارداد هوشمند <span class="paren">(Approve)</span></h3>
+            </div>
+            <ul class="bullets">
+              <li><span>مکانیزم تایید هوشمند جهت جلوگیری از کپی دستی آدرس.</span></li>
+              <li><span>محافظت کامل در برابر بدافزارهای کلیپ‌بورد <span class="paren">(Clipboard Malware)</span>.</span></li>
+              <li><span>بررسی موجودی، شبکه و مبلغ فاکتور پیش از کسر وجه.</span></li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- ۵) کارت ۳ اسلاید ۲ -->
+      <section class="scene scene--card" data-slide="2" style="--acc:#F59E0B" aria-hidden="true">
+        <div class="scene-fit">
+          <header class="scene-head stg">
+            <p class="scene-eyebrow"><span class="k-slide">اسلاید ۲</span>D-PAY WEBPAYMENT GATEWAY</p>
+            <h2 class="scene-sub">مزایای رقابتی و آخرین تغییرات سیستم <span class="paren">(آپدیت نسخه جدید)</span></h2>
+          </header>
+          <article class="bigcard stg" style="--c:#F59E0B">
+            <div class="bigcard__head">
+              <span class="bigcard__no">۰۳</span>
+              <p class="bigcard__label">آپدیت جدید نسخه D-pay</p>
+              <h3 class="bigcard__title">ساخت فروشگاه &amp; برداشت دستی</h3>
+            </div>
+            <ul class="bullets">
+              <li><span><b>ساخت فروشگاه:</b> تایید ولت فقط در لاگین است و ساخت فروشگاه نیازی به ولت ندارد.</span></li>
+              <li><span><b>مدیریت درآمد:</b> مبالغ دریافتی در قرارداد هوشمند درگاه ذخیره می‌شوند.</span></li>
+              <li><span><b>برداشت مستقیم:</b> پذیرنده هر زمان بخواهد از پنل درخواست برداشت ثبت می‌کند.</span></li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- ۶) شبکه‌های EVM اسلاید ۳ -->
+      <section class="scene scene--nets" data-slide="3" style="--acc:#07C8DA" aria-hidden="true">
+        <div class="scene-fit">
+          <header class="scene-head stg">
+            <p class="scene-eyebrow"><span class="k-slide">اسلاید ۳</span>D-PAY WEBPAYMENT GATEWAY</p>
+            <h2 class="scene-title">پشتیبانی شبکه‌های چندگانه و اوراکل محاسبه نرخ لحظه‌ای</h2>
+            <p class="scene-h">شبکه‌ها و بلاک‌چین‌های پشتیبانی‌شده <span class="paren">(EVM)</span></p>
+          </header>
+          <ul class="net-grid" role="list">
+            <li class="net stg"><p><span class="net__tick" aria-hidden="true">✔</span> <b>Ethereum (ETH)</b>: امنیت بالادستی و نقدینگی بالا</p></li>
+            <li class="net stg"><p><span class="net__tick" aria-hidden="true">✔</span> <b>BNB Smart Chain (BSC)</b>: تراکنش‌های بسیار سریع با کارمزد پایین</p></li>
+            <li class="net stg"><p><span class="net__tick" aria-hidden="true">✔</span> <b>Polygon (MATIC)</b>: مقیاس‌پذیری لایه دو اتریوم</p></li>
+            <li class="net stg"><p><span class="net__tick" aria-hidden="true">✔</span> <b>Avalanche (AVAX)</b>: سازگاری کامل EVM و سرعت بالا</p></li>
+            <li class="net stg"><p><span class="net__tick" aria-hidden="true">✔</span> <b>Arbitrum &amp; Optimism</b>: پشتیبانی از رول‌آپ‌های لایه دوم</p></li>
+            <li class="net stg"><p><span class="net__tick" aria-hidden="true">✔</span> <b>Fantom &amp; Harmony</b>: انعطاف‌پذیری در پرداخت‌های بین‌المللی</p></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ۷) اوراکل و رمزارزها اسلاید ۳ -->
+      <section class="scene scene--oracle" data-slide="3" style="--acc:#10B981" aria-hidden="true">
+        <div class="scene-fit">
+          <header class="scene-head stg">
+            <p class="scene-eyebrow"><span class="k-slide">اسلاید ۳</span>D-PAY WEBPAYMENT GATEWAY</p>
+            <h2 class="scene-title">اوراکل نرخ لحظه‌ای و رمزارزها</h2>
+          </header>
+          <ul class="bullet-cards" role="list">
+            <li class="bcard stg"><p><b>پذیرش استیبل‌کوین‌ها</b>: پشتیبانی کامل از USDT، USDC، BUSD و DAI روی تمام شبکه‌های فعال.</p></li>
+            <li class="bcard stg"><p><b>رمزارزهای پایه</b>: پذیرش مستقیم اتریوم <span class="paren">(ETH)</span> و بیت‌کوین <span class="paren">(BTC)</span>.</p></li>
+            <li class="bcard stg"><p><b>اوراکل نرخ لحظه‌ای</b>: محاسبه خودکار و پویای معادل کریپتویی سبد خرید دلاری هنگام تسویه.</p></li>
+            <li class="bcard stg"><p><b>تجربه کاربری همگام</b>: خریدار قیمت فاکتور <span class="paren">(مثلا ۲۰ دلار)</span> را به صورت لحظه‌ای به معادل ارز انتخابی می‌بیند.</p></li>
+            <li class="bcard stg"><p><b>مدیریت ارزها</b>: پذیرنده تعیین می‌کند کدام ارزها و شبکه‌ها در فروشگاه فعال باشند.</p></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ۸) ۴ مرحله ساخت فروشگاه — اسلاید ۴ -->
+      <section class="scene scene--steps" data-slide="4" style="--acc:#38BDF8" aria-hidden="true">
+        <div class="scene-fit">
+          <header class="scene-head stg">
+            <p class="scene-eyebrow"><span class="k-slide">اسلاید ۴</span>D-PAY WEBPAYMENT GATEWAY</p>
+            <h2 class="scene-title">فرآیند ۴ مرحله‌ای ساخت و تنظیمات فروشگاه <span class="paren">(آپدیت جدید)</span></h2>
+          </header>
+          <ol class="steps" role="list">
+            <li class="step stg"><span class="step__badge">مرحله ۱</span><h3>ورود با ولت Web3</h3><p>ورود و ثبت‌نام در داشبورد D-pay به وسیله متامسک یا ولت‌کانکت <span class="paren">(تایید ولت در این مرحله)</span>.</p></li>
+            <li class="step stg"><span class="step__badge">مرحله ۲</span><h3>افزودن فروشگاه</h3><p>انتخاب Add Shop و ثبت نام، توضیحات و لوگوی فروشگاه <span class="paren">(در این آپدیت نیاز به تایید ولت ندارد)</span>.</p></li>
+            <li class="step stg"><span class="step__badge">مرحله ۳</span><h3>لیست سفید دامنه‌ها</h3><p>وارد کردن دامنه‌های مجاز <span class="paren">(Whitelist Domain)</span> جهت امنیت فراخوانی API و جلوگیری از سوءاستفاده.</p></li>
+            <li class="step stg"><span class="step__badge">مرحله ۴</span><h3>دریافت Merchant Token</h3><p>پیکربندی ارزهای فعال و دریافت Token / Code اختصاصی فروشگاه جهت اتصال به سایت.</p></li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ۹) افزونه ووکامرس — اسلاید ۵ -->
+      <section class="scene scene--woo" data-slide="5" style="--acc:#F59E0B" aria-hidden="true">
+        <div class="scene-fit">
+          <header class="scene-head stg">
+            <p class="scene-eyebrow"><span class="k-slide">اسلاید ۵</span>D-PAY WEBPAYMENT GATEWAY</p>
+            <h2 class="scene-title">روش‌های یکپارچه‌سازی: افزونه ووکامرس و REST API</h2>
+            <p class="scene-h">افزونه وردپرس و ووکامرس <span class="paren">(WooCommerce)</span></p>
+          </header>
+          <ol class="num-rows" role="list">
+            <li class="numrow stg"><span class="numrow__n">۱</span><p><b>دریافت افزونه</b>: دانلود فایل Zip افزونه رسمی D-pay WooCommerce.</p></li>
+            <li class="numrow stg"><span class="numrow__n">۲</span><p><b>نصب در وردپرس</b>: بارگذاری و فعال‌سازی افزونه در بخش افزونه‌های وردپرس.</p></li>
+            <li class="numrow stg"><span class="numrow__n">۳</span><p><b>ورود به تنظیمات</b>: مراجعه به پیکربندی درگاه در مسیر <code dir="ltr">WooCommerce &gt; Settings &gt; Payments</code>.</p></li>
+            <li class="numrow stg"><span class="numrow__n">۴</span><p><b>جای‌گذاری Merchant Code</b>: وارد کردن توکن فروشگاه و ذخیره‌سازی برای شروع پذیرش کریپتو.</p></li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ۱۰) فرآیند Web API — اسلاید ۵ -->
+      <section class="scene scene--api" data-slide="5" style="--acc:#07C8DA" aria-hidden="true">
+        <div class="scene-fit">
+          <header class="scene-head stg">
+            <p class="scene-eyebrow"><span class="k-slide">اسلاید ۵</span>D-PAY WEBPAYMENT GATEWAY</p>
+            <h2 class="scene-title">فرآیند استعلام و تایید Web API</h2>
+          </header>
+          <ol class="api-rows" role="list">
+            <li class="apirow stg"><span class="apirow__n">1.</span><p><span class="method" dir="ltr">POST /order/add</span><b>: ارسال مبلغ، callback، شماره سفارش و merchant_code</b> -&gt; دریافت کد ۲۰ و لینک درگاه.</p></li>
+            <li class="apirow stg"><span class="apirow__n">2.</span><p><b>هدایت خریدار به Callback</b>: پس از پرداخت، درگاه خریدار را همراه کد اختصاصی Authority به آدرس Callback برمی‌گرداند.</p></li>
+            <li class="apirow stg"><span class="apirow__n">3.</span><p><span class="method" dir="ltr">POST /order/verify</span><b>: ارسال کد Authority جهت تایید نهایی درگاه</b> <span class="paren">(کد ۲۰ = پرداخت موفق، کد ۱۳ = ناموفق، کد ۲۱ = قبلا ثبت‌شده)</span>.</p></li>
+            <li class="apirow apirow--mod stg"><span class="apirow__ic">🛠</span><p><b>ماژول‌های اختصاصی</b>: امکان توسعه ماژول‌های سفارشی توسط تیم فنی D-pay برای سیستم‌های اختصاصی.</p></li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ۱۱) سفر خریدار — اسلاید ۶ -->
+      <section class="scene scene--journey" data-slide="6" style="--acc:#10B981" aria-hidden="true">
+        <div class="scene-fit">
+          <header class="scene-head stg">
+            <p class="scene-eyebrow"><span class="k-slide">اسلاید ۶</span>D-PAY WEBPAYMENT GATEWAY</p>
+            <h2 class="scene-title">سفر پرداخت خریدار و نحوه برداشت موجودی پذیرنده</h2>
+          </header>
+          <ol class="journey" role="list">
+            <li class="jstep stg"><span class="jstep__n">۱</span><h3>انتخاب ارز/شبکه</h3><p>خریدار ارز مورد نظر را در تسویه حساب انتخاب می‌کند.</p></li>
+            <li class="jstep stg"><span class="jstep__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M15 5 8 12l7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="jstep__n">۲</span><h3>اتصال ولت</h3><p>اتصال از طریق متامسک، ولت‌کانکت یا اسکن QR Code.</p></li>
+            <li class="jstep stg"><span class="jstep__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M15 5 8 12l7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="jstep__n">۳</span><h3>تایید هوشمند <span class="paren">(Approve)</span></h3><p>بررسی موجودی و تایید کسر دقیق مبلغ از ولت خریدار.</p></li>
+            <li class="jstep stg"><span class="jstep__arrow" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22"><path d="M15 5 8 12l7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="jstep__n">۴</span><h3>تسویه آنی شبکه</h3><p>تراکنش روی بلاک‌چین ثبت و سفارش نهایی می‌شود.</p></li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ۱۲) برداشت پذیرنده — اسلاید ۶ -->
+      <section class="scene scene--withdraw" data-slide="6" style="--acc:#F59E0B" aria-hidden="true">
+        <div class="scene-fit">
+          <header class="scene-head stg">
+            <p class="scene-eyebrow"><span class="k-slide">اسلاید ۶</span>D-PAY WEBPAYMENT GATEWAY</p>
+            <h2 class="scene-title">داشبورد مدیریت درآمد و نحوه برداشت پذیرنده <span class="paren">(نسخه جدید)</span></h2>
+          </header>
+          <ul class="bullet-cards" role="list">
+            <li class="bcard stg"><p><b>گزارش‌گیری لحظه‌ای فروش‌ها</b>: مشاهده کامل سفارش‌ها، تراکنش‌های موفق و تاریخچه درآمدها در پنل پیشرفته پذیرنده.</p></li>
+            <li class="bcard stg"><p><b>ذخیره‌سازی ایمن در قرارداد هوشمند</b>: مبالغ دریافتی از خریداران در محیط امن قرارداد هوشمند درگاه باقی می‌ماند.</p></li>
+            <li class="bcard stg"><p><b>درخواست برداشت دستی <span class="paren">(Manual Withdrawal)</span></b>: پذیرنده هر زمان که بخواهد می‌تواند از داخل پنل خود درخواست برداشت ثبت کند تا موجودی <span class="paren">(مثلاً USDT روی شبکه BSC)</span> مستقیماً به ولت شخصی او منتقل شود.</p></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ۱۳) صحنه پایانی -->
+      <section class="scene scene--cover scene--end" data-slide="6" style="--acc:#07C8DA" aria-hidden="true">
+        <div class="scene-fit">
+          <p class="scene-kicker stg"><span class="k-slide">پایان ارائه</span></p>
+          <h2 class="cover-title stg">درگاه پرداخت غیرمتمرکز <span class="grad">D-pay</span></h2>
+          <p class="cover-sub stg">راهنمای جامع پذیرندگان و یکپارچه‌سازی درگاه Web3 <span class="paren">(ویرایش جدید سیستم)</span></p>
+          <div class="end-cta stg">
+            <button class="btn btn--primary" id="enterInteractive" type="button">
+              <span>ورود به بخش تعاملی</span>
+              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 5v10m0 0-4-4m4 4 4-4M5 19h14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <button class="btn btn--ghost" id="replayTop" type="button">
+              <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path d="M4 10a8 8 0 1 1 2.3 5.7M4 10V5m0 5h5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span>پخش دوباره</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- نور جاروبی تعویض صحنه -->
+    <div class="deck-sweep" id="deckSweep" aria-hidden="true"></div>
+
+    <!-- کروم پایین صحنه -->
+    <div class="deck-bottombar">
+      <div class="deck-hint" id="deckHint" aria-hidden="true">
+        <span>اسکرول کنید یا از کلیدها استفاده کنید</span>
+        <kbd dir="ltr">←</kbd><kbd dir="ltr">→</kbd>
+      </div>
+      <div class="deck-nav">
+        <button class="deck-nav__btn" id="btnPrev" type="button" aria-label="صحنه قبلی" title="صحنه قبلی">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="m9 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="deck-nav__btn" id="btnNext" type="button" aria-label="صحنه بعدی" title="صحنه بعدی">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="m15 5-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
       </div>
+      <div class="deck-progress" aria-hidden="true"><i id="deckProgress"></i></div>
     </div>
-  </header>
+  </div>
+</section>
 
-  <main>
-    <!-- ===== Hero (Slide 1) ===== -->
-    <section class="hero" id="hero">
-      <div class="hero-bg" aria-hidden="true">
-        <img src="assets/img/hero-art.jpg" alt="" fetchpriority="high" />
-        <div class="hero-veil"></div>
-        <canvas id="netCanvas"></canvas>
-        <div class="orb orb-a"></div>
-        <div class="orb orb-b"></div>
-        <div class="hero-grid"></div>
-      </div>
+<!-- ═══════════════ پرده دوم — بخش تعاملی ═══════════════ -->
+<section class="act2" id="interactive">
 
-      <div class="container hero-inner">
-        <p class="eyebrow reveal" data-reveal>
-          <span class="eyebrow-dot"></span>
-          <span class="latin">D-PAY&nbsp;&nbsp;•&nbsp;&nbsp;WEB3 PAYMENT GATEWAY</span>
-        </p>
-        <h1 class="hero-title reveal" data-reveal data-delay="80">
-          درگاه پرداخت غیرمتمرکز
-          <span class="grad latin">D-pay</span>
-        </h1>
-        <p class="hero-sub reveal" data-reveal data-delay="160">
-          راهنمای جامع پذیرندگان و یکپارچه‌سازی درگاه Web3
-          <span class="hero-edition">— ویرایش جدید سیستم</span>
-        </p>
+  <!-- آزمایشگاه اوراکل -->
+  <div class="section" id="lab">
+    <div class="section__in">
+      <header class="sec-head" data-reveal>
+        <p class="sec-eyebrow"><span class="demo-badge">نمایشی</span>D-PAY WEBPAYMENT GATEWAY</p>
+        <h2 class="sec-title">آزمایشگاه اوراکل نرخ لحظه‌ای</h2>
+        <p class="sec-lead">اوراکل نرخ لحظه‌ای: محاسبه خودکار و پویای معادل کریپتویی سبد خرید دلاری هنگام تسویه.</p>
+      </header>
 
-        <ul class="hero-pills reveal" data-reveal data-delay="240" aria-label="ویژگی‌های کلیدی">
-          <li>
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="12" rx="3"/><path d="M2 10h20M16 15h2"/></svg>
-            ورود با ولت Web3
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l1.5-5h15L21 9M3 9v10a1 1 0 0 0 1 1h16a1 1 0 0 0 1-1V9M3 9h18M9 20v-6h6v6"/></svg>
-            ساخت فروشگاه بدون تایید ولت
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0l-4-4m4 4l4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></svg>
-            برداشت دستی توسط پذیرنده
-          </li>
-          <li>
-            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 9l-4 3 4 3M16 9l4 3-4 3M13 5l-2 14"/></svg>
-            افزونه ووکامرس و <span class="latin">REST API</span>
-          </li>
-        </ul>
-
-        <div class="hero-ctas reveal" data-reveal data-delay="320">
-          <a href="#setup" class="btn btn-primary magnetic"><span>شروع پذیرش رمزارز</span>
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5m0 0l6-6m-6 6l6 6"/></svg>
-          </a>
-          <a href="#integration" class="btn btn-ghost magnetic"><span>مشاهده مسیر یکپارچه‌سازی</span></a>
-        </div>
-
-        <dl class="hero-stats reveal" data-reveal data-delay="400">
-          <div class="stat">
-            <dt>شبکه EVM فعال</dt>
-            <dd><span class="latin counter" data-count="6">0</span><span class="plus">+</span></dd>
-          </div>
-          <div class="stat">
-            <dt>استیبل‌کوین و رمزارز</dt>
-            <dd><span class="latin counter" data-count="6">0</span><span class="plus">+</span></dd>
-          </div>
-          <div class="stat">
-            <dt>مرحله تا راه‌اندازی فروشگاه</dt>
-            <dd><span class="latin counter" data-count="4">0</span></dd>
-          </div>
-          <div class="stat">
-            <dt>نیاز به احراز هویت</dt>
-            <dd class="no-kyc">بدون <span class="latin">KYC</span></dd>
-          </div>
-        </dl>
-      </div>
-
-      <a href="#features" class="scroll-cue" aria-label="اسکرول به بخش بعد">
-        <span class="mouse"><span class="wheel"></span></span>
-        <span class="cue-text">اسکرول کنید</span>
-      </a>
-    </section>
-
-    <!-- ===== Ticker ===== -->
-    <div class="ticker" aria-hidden="true">
-      <div class="ticker-track">
-        <div class="ticker-group">
-          <span class="latin">ETHEREUM</span><i></i><span>تتر</span><i></i><span class="latin">BNB CHAIN</span><i></i>
-          <span class="latin">USDT</span><i></i><span class="latin">POLYGON</span><i></i><span>بیت‌کوین</span><i></i>
-          <span class="latin">AVALANCHE</span><i></i><span class="latin">USDC</span><i></i><span class="latin">ARBITRUM</span><i></i>
-          <span class="latin">DAI</span><i></i><span class="latin">OPTIMISM</span><i></i><span class="latin">FANTOM</span><i></i>
-        </div>
-        <div class="ticker-group">
-          <span class="latin">ETHEREUM</span><i></i><span>تتر</span><i></i><span class="latin">BNB CHAIN</span><i></i>
-          <span class="latin">USDT</span><i></i><span class="latin">POLYGON</span><i></i><span>بیت‌کوین</span><i></i>
-          <span class="latin">AVALANCHE</span><i></i><span class="latin">USDC</span><i></i><span class="latin">ARBITRUM</span><i></i>
-          <span class="latin">DAI</span><i></i><span class="latin">OPTIMISM</span><i></i><span class="latin">FANTOM</span><i></i>
-        </div>
-      </div>
-    </div>
-
-    <!-- ===== Features (Slide 2) ===== -->
-    <section class="section" id="features">
-      <div class="container">
-        <div class="section-head reveal" data-reveal>
-          <p class="eyebrow"><span class="latin">D-PAY WEBPAYMENT GATEWAY</span></p>
-          <h2 class="section-title">مزایای رقابتی و آخرین تغییرات سیستم</h2>
-          <p class="section-lead">هر آنچه در <strong>آپدیت نسخه جدید</strong> تغییر کرده — سریع‌تر، امن‌تر، ناشناس‌تر.</p>
-        </div>
-
-        <div class="cards-3">
-          <article class="glass-card tilt reveal" data-reveal data-tone="cyan">
-            <div class="card-glow"></div>
-            <div class="card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg>
+      <div class="lab" data-reveal>
+        <div class="lab__form card">
+          <div class="field">
+            <label for="usdAmount">مبلغ فاکتور <span class="muted">(دلار)</span></label>
+            <div class="amount-wrap">
+              <input id="usdAmount" type="number" inputmode="decimal" value="20" min="0.01" max="1000000" step="0.01">
+              <span class="amount-wrap__cur">$</span>
             </div>
-            <p class="card-kicker">ورود ناشناس</p>
-            <h3>احراز هویت Web3 <span class="nowrap">(بدون KYC)</span></h3>
-            <ul class="check-list">
-              <li>ورود فقط با متامسک، ولت‌کانکت یا اسکن QR Code.</li>
-              <li>حفظ کامل محرمانگی هویت پذیرنده و خریدار (بدون ایمیل و پسورد).</li>
-              <li>عدم نیاز به ارائه مدارک هویتی برای شروع پذیرش رمزارز.</li>
-            </ul>
-          </article>
-
-          <article class="glass-card tilt reveal" data-reveal data-delay="120" data-tone="green">
-            <div class="card-glow"></div>
-            <div class="card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><circle cx="12" cy="15" r="1.5"/></svg>
-            </div>
-            <p class="card-kicker">حذف خطاهای پرداخت</p>
-            <h3>امنیت قرارداد هوشمند <span class="latin">(Approve)</span></h3>
-            <ul class="check-list">
-              <li>مکانیزم تایید هوشمند جهت جلوگیری از کپی دستی آدرس.</li>
-              <li>محافظت کامل در برابر بدافزارهای کلیپ‌بورد (Clipboard Malware).</li>
-              <li>بررسی موجودی، شبکه و مبلغ فاکتور پیش از کسر وجه.</li>
-            </ul>
-          </article>
-
-          <article class="glass-card tilt reveal" data-reveal data-delay="240" data-tone="amber">
-            <div class="card-glow"></div>
-            <span class="card-badge">آپدیت جدید</span>
-            <div class="card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.6-6.4M21 4v5h-5"/></svg>
-            </div>
-            <p class="card-kicker">آپدیت جدید نسخه D-pay</p>
-            <h3>ساخت فروشگاه <span class="latin">&amp;</span> برداشت دستی</h3>
-            <ul class="check-list">
-              <li><strong>ساخت فروشگاه:</strong> تایید ولت فقط در لاگین است و ساخت فروشگاه نیازی به ولت ندارد.</li>
-              <li><strong>مدیریت درآمد:</strong> مبالغ دریافتی در قرارداد هوشمند درگاه ذخیره می‌شوند.</li>
-              <li><strong>برداشت مستقیم:</strong> پذیرنده هر زمان بخواهد از پنل درخواست برداشت ثبت می‌کند.</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== Networks & Oracle (Slide 3) ===== -->
-    <section class="section section-alt" id="networks">
-      <div class="container">
-        <div class="section-head reveal" data-reveal>
-          <p class="eyebrow"><span class="latin">MULTI-CHAIN • LIVE ORACLE</span></p>
-          <h2 class="section-title">پشتیبانی شبکه‌های چندگانه و اوراکل محاسبه نرخ لحظه‌ای</h2>
-          <p class="section-lead">یک درگاه، تمام اکوسیستم <span class="latin">EVM</span> — با تسویه دقیق و همگام با قیمت بازار.</p>
-        </div>
-
-        <div class="nets-grid">
-          <div class="panel reveal" data-reveal>
-            <h3 class="panel-title"><span class="tone-cyan">شبکه‌ها و بلاک‌چین‌های پشتیبانی‌شده</span> <span class="latin dim">(EVM)</span></h3>
-            <ul class="net-list">
-              <li>
-                <span class="chain-badge" style="--cb:#627eea"><span class="latin">ETH</span></span>
-                <div><strong class="latin">Ethereum (ETH)</strong><span>امنیت بالادستی و نقدینگی بالا</span></div>
-              </li>
-              <li>
-                <span class="chain-badge" style="--cb:#f0b90b"><span class="latin">BSC</span></span>
-                <div><strong class="latin">BNB Smart Chain (BSC)</strong><span>تراکنش‌های بسیار سریع با کارمزد پایین</span></div>
-              </li>
-              <li>
-                <span class="chain-badge" style="--cb:#8247e5"><span class="latin">MAT</span></span>
-                <div><strong class="latin">Polygon (MATIC)</strong><span>مقیاس‌پذیری لایه دو اتریوم</span></div>
-              </li>
-              <li>
-                <span class="chain-badge" style="--cb:#e84142"><span class="latin">AVX</span></span>
-                <div><strong class="latin">Avalanche (AVAX)</strong><span>سازگاری کامل EVM و سرعت بالا</span></div>
-              </li>
-              <li>
-                <span class="chain-badge" style="--cb:#28a0f0"><span class="latin">L2</span></span>
-                <div><strong class="latin">Arbitrum &amp; Optimism</strong><span>پشتیبانی از رول‌آپ‌های لایه دوم</span></div>
-              </li>
-              <li>
-                <span class="chain-badge" style="--cb:#1969ff"><span class="latin">F&H</span></span>
-                <div><strong class="latin">Fantom &amp; Harmony</strong><span>انعطاف‌پذیری در پرداخت‌های بین‌المللی</span></div>
-              </li>
-            </ul>
-          </div>
-
-          <div class="panel panel-oracle reveal" data-reveal data-delay="140">
-            <h3 class="panel-title"><span class="tone-sky">اوراکل نرخ لحظه‌ای و رمزارزها</span></h3>
-
-            <div class="coin-chips" aria-label="ارزهای پشتیبانی‌شده">
-              <span class="coin stable"><span class="latin">USDT</span></span>
-              <span class="coin stable"><span class="latin">USDC</span></span>
-              <span class="coin stable"><span class="latin">BUSD</span></span>
-              <span class="coin stable"><span class="latin">DAI</span></span>
-              <span class="coin base"><span class="latin">ETH</span></span>
-              <span class="coin base"><span class="latin">BTC</span></span>
-            </div>
-
-            <div class="converter" id="converter">
-              <div class="conv-head">
-                <span class="live-dot" aria-hidden="true"></span>
-                <span>محاسبه‌گر نمایشی اوراکل</span>
-                <span class="latin conv-rate" id="convRate">1 USDT ≈ $1.00</span>
-              </div>
-              <div class="conv-body">
-                <label class="conv-field">
-                  <span>مبلغ فاکتور (دلار)</span>
-                  <input type="number" id="convAmount" class="latin" value="20" min="1" max="1000000" inputmode="decimal" />
-                </label>
-                <label class="conv-field">
-                  <span>ارز پرداختی خریدار</span>
-                  <select id="convCurrency" class="latin">
-                    <option value="USDT">USDT</option>
-                    <option value="USDC">USDC</option>
-                    <option value="BUSD">BUSD</option>
-                    <option value="DAI">DAI</option>
-                    <option value="ETH">ETH</option>
-                    <option value="BTC">BTC</option>
-                  </select>
-                </label>
-              </div>
-              <div class="conv-result">
-                <span>معادل پرداختی:</span>
-                <strong class="latin" id="convResult">20.00 USDT</strong>
-              </div>
-              <p class="conv-note">نرخ‌ها نمایشی‌اند؛ در درگاه واقعی، معادل کریپتویی سبد خرید به‌صورت لحظه‌ای از اوراکل محاسبه می‌شود.</p>
-            </div>
-
-            <ul class="check-list small">
-              <li><strong>پذیرش استیبل‌کوین‌ها:</strong> پشتیبانی کامل از USDT، USDC، BUSD و DAI روی تمام شبکه‌های فعال.</li>
-              <li><strong>رمزارزهای پایه:</strong> پذیرش مستقیم اتریوم (ETH) و بیت‌کوین (BTC).</li>
-              <li><strong>اوراکل نرخ لحظه‌ای:</strong> محاسبه خودکار و پویای معادل کریپتویی سبد خرید دلاری هنگام تسویه.</li>
-              <li><strong>تجربه کاربری همگام:</strong> خریدار قیمت فاکتور (مثلا ۲۰ دلار) را به‌صورت لحظه‌ای به معادل ارز انتخابی می‌بیند.</li>
-              <li><strong>مدیریت ارزها:</strong> پذیرنده تعیین می‌کند کدام ارزها و شبکه‌ها در فروشگاه فعال باشند.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== Setup steps (Slide 4) ===== -->
-    <section class="section" id="setup">
-      <div class="container">
-        <div class="section-head reveal" data-reveal>
-          <p class="eyebrow"><span class="latin">MERCHANT ONBOARDING</span></p>
-          <h2 class="section-title">فرآیند ۴ مرحله‌ای ساخت و تنظیمات فروشگاه</h2>
-          <p class="section-lead">از ورود با ولت تا دریافت توکن اختصاصی — <strong>در آپدیت جدید، ساخت فروشگاه نیازی به تایید ولت ندارد.</strong></p>
-        </div>
-
-        <div class="timeline" id="timeline">
-          <div class="timeline-line" aria-hidden="true"><span id="timelineFill"></span></div>
-
-          <article class="tl-step reveal" data-reveal>
-            <div class="tl-num latin">01</div>
-            <div class="tl-card glass-card">
-              <p class="card-kicker tone-cyan">مرحله ۱</p>
-              <h3>ورود با ولت Web3</h3>
-              <p>ورود و ثبت‌نام در داشبورد D-pay به‌وسیله متامسک یا ولت‌کانکت <strong>(تایید ولت در این مرحله)</strong>.</p>
-              <span class="tag">تایید ولت • فقط در لاگین</span>
-            </div>
-          </article>
-
-          <article class="tl-step reveal" data-reveal>
-            <div class="tl-num latin">02</div>
-            <div class="tl-card glass-card">
-              <p class="card-kicker tone-sky">مرحله ۲</p>
-              <h3>افزودن فروشگاه</h3>
-              <p>انتخاب <span class="latin">Add Shop</span> و ثبت نام، توضیحات و لوگوی فروشگاه <strong>(در این آپدیت نیاز به تایید ولت ندارد)</strong>.</p>
-              <span class="tag tag-new">بدون نیاز به تایید ولت • جدید</span>
-            </div>
-          </article>
-
-          <article class="tl-step reveal" data-reveal>
-            <div class="tl-num latin">03</div>
-            <div class="tl-card glass-card">
-              <p class="card-kicker tone-green">مرحله ۳</p>
-              <h3>لیست سفید دامنه‌ها</h3>
-              <p>وارد کردن دامنه‌های مجاز <span class="latin">(Whitelist Domain)</span> جهت امنیت فراخوانی API و جلوگیری از سوءاستفاده.</p>
-              <span class="tag">امنیت فراخوانی API</span>
-            </div>
-          </article>
-
-          <article class="tl-step reveal" data-reveal>
-            <div class="tl-num latin">04</div>
-            <div class="tl-card glass-card">
-              <p class="card-kicker tone-amber">مرحله ۴</p>
-              <h3>دریافت <span class="latin">Merchant Token</span></h3>
-              <p>پیکربندی ارزهای فعال و دریافت <span class="latin">Token / Code</span> اختصاصی فروشگاه جهت اتصال به سایت.</p>
-              <span class="tag latin" dir="ltr">Token / Code</span>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== Integration (Slide 5) ===== -->
-    <section class="section section-alt" id="integration">
-      <div class="container">
-        <div class="section-head reveal" data-reveal>
-          <p class="eyebrow"><span class="latin">WOOCOMMERCE • REST API</span></p>
-          <h2 class="section-title">روش‌های یکپارچه‌سازی: افزونه ووکامرس و REST API</h2>
-          <p class="section-lead">دو مسیر، یک نتیجه: شروع پذیرش کریپتو در کوتاه‌ترین زمان ممکن.</p>
-        </div>
-
-        <div class="tabs reveal" data-reveal role="tablist" aria-label="روش یکپارچه‌سازی">
-          <button class="tab-btn active" role="tab" aria-selected="true" data-tab="woo" id="tab-woo">افزونه وردپرس و ووکامرس</button>
-          <button class="tab-btn" role="tab" aria-selected="false" data-tab="api" id="tab-api">استعلام و تایید <span class="latin">Web API</span></button>
-          <span class="tab-indicator" id="tabIndicator" aria-hidden="true"></span>
-        </div>
-
-        <div class="tab-panels">
-          <!-- WooCommerce -->
-          <div class="tab-panel active" data-panel="woo" role="tabpanel" aria-labelledby="tab-woo">
-            <div class="woo-grid">
-              <ol class="steps-list">
-                <li>
-                  <span class="step-n latin">1</span>
-                  <div><strong>دریافت افزونه:</strong> دانلود فایل <span class="latin">Zip</span> افزونه رسمی <span class="latin">D-pay WooCommerce</span>.</div>
-                </li>
-                <li>
-                  <span class="step-n latin">2</span>
-                  <div><strong>نصب در وردپرس:</strong> بارگذاری و فعال‌سازی افزونه در بخش افزونه‌های وردپرس.</div>
-                </li>
-                <li>
-                  <span class="step-n latin">3</span>
-                  <div><strong>ورود به تنظیمات:</strong> مراجعه به پیکربندی درگاه در مسیر <code class="latin" dir="ltr">WooCommerce &gt; Settings &gt; Payments</code>.</div>
-                </li>
-                <li>
-                  <span class="step-n latin">4</span>
-                  <div><strong>جای‌گذاری Merchant Code:</strong> وارد کردن توکن فروشگاه و ذخیره‌سازی برای شروع پذیرش کریپتو.</div>
-                </li>
-              </ol>
-              <div class="woo-mock glass-card">
-                <div class="mock-head">
-                  <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                  <span class="mock-title latin" dir="ltr">WooCommerce &gt; Settings &gt; Payments</span>
-                </div>
-                <div class="mock-body">
-                  <div class="mock-row on">
-                    <span class="mock-switch"></span>
-                    <div>
-                      <strong class="latin">D-pay Gateway</strong>
-                      <span>پرداخت رمزارزی نامحدود</span>
-                    </div>
-                  </div>
-                  <label class="mock-field">
-                    <span><span class="latin">Merchant Code</span></span>
-                    <span class="mock-input latin" dir="ltr">dpay_live_9f2…7ac <em>● متصل</em></span>
-                  </label>
-                  <div class="mock-nets">
-                    <span class="latin">ETH</span><span class="latin">BSC</span><span class="latin">MATIC</span><span class="latin">USDT</span><span class="latin">BTC</span>
-                  </div>
-                </div>
-              </div>
+            <div class="chips" id="amountChips" role="group" aria-label="مبلغ‌های نمونه">
+              <button type="button" data-amt="20">۲۰$</button>
+              <button type="button" data-amt="59.9">۵۹٫۹$</button>
+              <button type="button" data-amt="120">۱۲۰$</button>
+              <button type="button" data-amt="480">۴۸۰$</button>
             </div>
           </div>
-
-          <!-- REST API -->
-          <div class="tab-panel" data-panel="api" role="tabpanel" aria-labelledby="tab-api">
-            <div class="api-grid">
-              <div class="code-window" dir="ltr">
-                <div class="code-head">
-                  <span class="dot"></span><span class="dot"></span><span class="dot"></span>
-                  <span class="code-title latin">REST API — order flow</span>
-                  <button class="copy-btn" id="copyApi" aria-label="کپی نمونه کد">
-                    <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
-                    <span class="latin">Copy</span>
-                  </button>
-                </div>
-<pre class="code-body latin" id="apiCode"><code><span class="cm"># 1 — create order</span>
-<span class="m">POST</span> /order/add
-{
-  <span class="k">"amount"</span>: <span class="n">20</span>,
-  <span class="k">"merchant_code"</span>: <span class="s">"dpay_live_9f27ac"</span>,
-  <span class="k">"order_id"</span>: <span class="s">"ORD-1042"</span>,
-  <span class="k">"callback"</span>: <span class="s">"https://shop.com/verify"</span>
-}
-<span class="cm">→ 200 · { "code": 20, "payment_url": "https://pay…/A91x" }</span>
-
-<span class="cm"># 2 — buyer returns with Authority</span>
-GET {callback}?<span class="k">Authority</span>=<span class="s">"A91x_Q7"</span>
-
-<span class="cm"># 3 — verify payment</span>
-<span class="m">POST</span> /order/verify
-{ <span class="k">"authority"</span>: <span class="s">"A91x_Q7"</span> }
-<span class="cm">→ 20 paid · 13 failed · 21 duplicate</span></code></pre>
-              </div>
-              <ol class="steps-list">
-                <li>
-                  <span class="step-n latin">1</span>
-                  <div><strong class="latin">POST /order/add:</strong> ارسال مبلغ، <span class="latin">callback</span>، شماره سفارش و <span class="latin">merchant_code</span> ← دریافت کد ۲۰ و لینک درگاه.</div>
-                </li>
-                <li>
-                  <span class="step-n latin">2</span>
-                  <div><strong>هدایت خریدار به Callback:</strong> پس از پرداخت، درگاه خریدار را همراه کد اختصاصی <span class="latin">Authority</span> به آدرس Callback برمی‌گرداند.</div>
-                </li>
-                <li>
-                  <span class="step-n latin">3</span>
-                  <div><strong class="latin">POST /order/verify:</strong> ارسال کد <span class="latin">Authority</span> جهت تایید نهایی درگاه (کد ۲۰ = پرداخت موفق، کد ۱۳ = ناموفق، کد ۲۱ = قبلا ثبت‌شده).</div>
-                </li>
-                <li class="custom">
-                  <span class="step-n">✦</span>
-                  <div><strong>ماژول‌های اختصاصی:</strong> امکان توسعه ماژول‌های سفارشی توسط تیم فنی D-pay برای سیستم‌های اختصاصی.</div>
-                </li>
-              </ol>
+          <div class="field">
+            <label for="curGroup">ارز پرداخت</label>
+            <div class="chips chips--cur" id="curGroup" role="group" aria-label="انتخاب ارز">
+              <button type="button" class="is-on" data-cur="USDT">USDT</button>
+              <button type="button" data-cur="USDC">USDC</button>
+              <button type="button" data-cur="BUSD">BUSD</button>
+              <button type="button" data-cur="DAI">DAI</button>
+              <button type="button" data-cur="ETH">ETH</button>
+              <button type="button" data-cur="BTC">BTC</button>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== Buyer journey (Slide 6a) ===== -->
-    <section class="section" id="journey">
-      <div class="container">
-        <div class="section-head reveal" data-reveal>
-          <p class="eyebrow"><span class="latin">BUYER CHECKOUT FLOW</span></p>
-          <h2 class="section-title">سفر پرداخت خریدار</h2>
-          <p class="section-lead">چهار قدم تا تسویه آنی روی بلاک‌چین — بدون حساب کاربری، بدون انتظار.</p>
-        </div>
-
-        <div class="journey" id="journeyFlow">
-          <svg class="journey-path" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true" dir="ltr">
-            <path class="jp-bg" d="M20,60 C200,10 320,110 600,60 C880,10 1000,110 1180,60" />
-            <path class="jp-fg" id="journeyPathFg" d="M20,60 C200,10 320,110 600,60 C880,10 1000,110 1180,60" />
-          </svg>
-          <div class="journey-steps">
-            <article class="j-step reveal" data-reveal>
-              <span class="j-node latin">1</span>
-              <h3>انتخاب ارز / شبکه</h3>
-              <p>خریدار ارز مورد نظر را در تسویه‌حساب انتخاب می‌کند.</p>
-            </article>
-            <article class="j-step reveal" data-reveal data-delay="120">
-              <span class="j-node latin">2</span>
-              <h3>اتصال ولت</h3>
-              <p>اتصال از طریق متامسک، ولت‌کانکت یا اسکن QR Code.</p>
-            </article>
-            <article class="j-step reveal" data-reveal data-delay="240">
-              <span class="j-node latin">3</span>
-              <h3>تایید هوشمند <span class="latin">(Approve)</span></h3>
-              <p>بررسی موجودی و تایید کسر دقیق مبلغ از ولت خریدار.</p>
-            </article>
-            <article class="j-step reveal" data-reveal data-delay="360">
-              <span class="j-node latin">4</span>
-              <h3>تسویه آنی شبکه</h3>
-              <p>تراکنش روی بلاک‌چین ثبت و سفارش نهایی می‌شود.</p>
-            </article>
+          <div class="field">
+            <label for="netSelect">شبکه</label>
+            <select id="netSelect">
+              <option>Ethereum (ETH)</option>
+              <option selected>BNB Smart Chain (BSC)</option>
+              <option>Polygon (MATIC)</option>
+              <option>Avalanche (AVAX)</option>
+              <option>Arbitrum &amp; Optimism</option>
+              <option>Fantom &amp; Harmony</option>
+            </select>
+            <p class="field__note">مدیریت ارزها: پذیرنده تعیین می‌کند کدام ارزها و شبکه‌ها در فروشگاه فعال باشند.</p>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- ===== Merchant dashboard (Slide 6b) ===== -->
-    <section class="section section-alt" id="merchant">
-      <div class="container">
-        <div class="section-head reveal" data-reveal>
-          <p class="eyebrow"><span class="latin">MERCHANT PANEL • MANUAL WITHDRAWAL</span></p>
-          <h2 class="section-title">داشبورد مدیریت درآمد و نحوه برداشت پذیرنده</h2>
-          <p class="section-lead">در نسخه جدید، موجودی شما در قرارداد هوشمند درگاه ذخیره می‌ماند — تا هر زمان که <strong>خودتان</strong> بخواهید برداشت کنید.</p>
+        <div class="lab__out card" aria-live="polite">
+          <div class="lab__live"><span class="pulse"></span> به‌روزرسانی نرخ‌ها — <b>شبیه‌سازی لحظه‌ای (نمایشی)</b></div>
+          <p class="lab__label">خریدار در ولت خود می‌بیند</p>
+          <p class="lab__pay" id="labPay"><b id="labAmt">۲۰٫۰۰</b><span id="labCur">USDT</span></p>
+          <dl class="lab__rows">
+            <div><dt>مبلغ فاکتور</dt><dd id="labUsd">۲۰٫۰۰ $</dd></div>
+            <div><dt>نرخ نمایشی اوراکل</dt><dd id="labRate" dir="ltr">1 USDT = 1.00 $</dd></div>
+            <div><dt>شبکه</dt><dd id="labNet">BNB Smart Chain (BSC)</dd></div>
+            <div><dt>آخرین تیک</dt><dd id="labTick" dir="ltr">—</dd></div>
+          </dl>
+          <p class="lab__note">تجربه کاربری همگام: خریدار قیمت فاکتور (مثلا ۲۰ دلار) را به صورت لحظه‌ای به معادل ارز انتخابی می‌بیند.</p>
         </div>
-
-        <div class="merchant-grid">
-          <div class="dash reveal" data-reveal dir="rtl">
-            <div class="dash-head">
-              <div>
-                <p class="dash-title">پنل پذیرنده</p>
-                <p class="dash-sub latin" dir="ltr">myshop.eth • BSC</p>
-              </div>
-              <span class="dash-live"><span class="live-dot"></span> گزارش لحظه‌ای</span>
-            </div>
-            <div class="dash-balance">
-              <div>
-                <span>موجودی قابل برداشت</span>
-                <strong class="latin" id="dashBalance">1,284.50 USDT</strong>
-              </div>
-              <button class="btn btn-primary btn-sm" id="withdrawBtn"><span>ثبت درخواست برداشت</span></button>
-            </div>
-            <ul class="dash-orders">
-              <li><span class="latin" dir="ltr">#ORD-1042</span><span>۲۰.۰۰ <span class="latin">USDT</span></span><em class="ok">موفق</em></li>
-              <li><span class="latin" dir="ltr">#ORD-1041</span><span>۰.۰۱۲ <span class="latin">ETH</span></span><em class="ok">موفق</em></li>
-              <li><span class="latin" dir="ltr">#ORD-1040</span><span>۱۵۰.۰۰ <span class="latin">USDC</span></span><em class="ok">موفق</em></li>
-              <li><span class="latin" dir="ltr">#ORD-1039</span><span>۴۵.۰۰ <span class="latin">DAI</span></span><em class="pending">در انتظار</em></li>
-            </ul>
-            <p class="dash-note">مبالغ دریافتی در محیط امن قرارداد هوشمند درگاه باقی می‌ماند.</p>
-          </div>
-
-          <div class="merchant-points reveal" data-reveal data-delay="140">
-            <ul class="check-list big">
-              <li>
-                <strong>گزارش‌گیری لحظه‌ای فروش‌ها:</strong>
-                مشاهده کامل سفارش‌ها، تراکنش‌های موفق و تاریخچه درآمدها در پنل پیشرفته پذیرنده.
-              </li>
-              <li>
-                <strong>ذخیره‌سازی ایمن در قرارداد هوشمند:</strong>
-                مبالغ دریافتی از خریداران در محیط امن قرارداد هوشمند درگاه باقی می‌ماند.
-              </li>
-              <li>
-                <strong>درخواست برداشت دستی <span class="latin">(Manual Withdrawal)</span>:</strong>
-                پذیرنده هر زمان که بخواهد می‌تواند از داخل پنل خود درخواست برداشت ثبت کند تا موجودی (مثلاً USDT روی شبکه BSC) مستقیماً به ولت شخصی او منتقل شود.
-              </li>
-            </ul>
-            <div class="merchant-cta">
-              <a href="#cta" class="btn btn-ghost magnetic"><span>مشاهده جمع‌بندی نهایی</span></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== Final CTA ===== -->
-    <section class="section cta-section" id="cta">
-      <div class="container">
-        <div class="cta-box reveal" data-reveal>
-          <div class="cta-bg" aria-hidden="true"><div class="orb orb-c"></div><div class="cta-grid"></div></div>
-          <p class="eyebrow center"><span class="latin">START ACCEPTING CRYPTO TODAY</span></p>
-          <h2>فروشگاه شما، آماده ورود به <span class="grad">اقتصاد بعدی</span> است</h2>
-          <p>بدون احراز هویت • با امنیت قرارداد هوشمند • با برداشت دستی هر زمان که بخواهید</p>
-          <div class="hero-ctas center">
-            <a href="#setup" class="btn btn-primary magnetic"><span>ساخت فروشگاه در ۴ مرحله</span></a>
-            <a href="#integration" class="btn btn-ghost magnetic"><span>مستندات یکپارچه‌سازی</span></a>
-          </div>
-          <p class="cta-brand">محصولی از اکوسیستم <strong class="latin">Verexa</strong> — <span class="latin dim">Architecting the Next Economy</span></p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- ===== Footer ===== -->
-  <footer class="site-footer">
-    <div class="container footer-grid">
-      <div class="footer-brand">
-        <a href="#hero" class="brand">
-          <svg viewBox="0 0 64 64" width="34" height="34" fill="none" aria-hidden="true">
-            <rect x="2" y="2" width="60" height="60" rx="14" fill="#04070d" stroke="#07c8da" stroke-opacity=".45" stroke-width="2"/>
-            <path d="M20 16h11c9.4 0 15 6.6 15 16s-5.6 16-15 16H20V16zm8 8v16h2.6c4.9 0 7.4-3.4 7.4-8s-2.5-8-7.4-8H28z" fill="#07c8da"/>
-            <circle cx="47" cy="45" r="3.4" fill="#f59e0b"/>
-          </svg>
-          <span class="brand-text">
-            <span class="brand-name latin">D-pay</span>
-            <span class="brand-tag">درگاه پرداخت Web3</span>
-          </span>
-        </a>
-        <p>درگاه پرداخت غیرمتمرکز برای پذیرندگان آینده — ورود با ولت، تسویه آنی، برداشت دستی.</p>
-      </div>
-      <nav aria-label="دسترسی سریع">
-        <p class="foot-head">بخش‌ها</p>
-        <a href="#features">مزایای رقابتی</a>
-        <a href="#setup">ساخت فروشگاه</a>
-        <a href="#integration">یکپارچه‌سازی</a>
-        <a href="#merchant">پنل پذیرنده</a>
-      </nav>
-      <nav aria-label="شبکه‌ها">
-        <p class="foot-head">شبکه‌ها</p>
-        <a href="#networks" class="latin" dir="ltr">Ethereum</a>
-        <a href="#networks" class="latin" dir="ltr">BNB Chain</a>
-        <a href="#networks" class="latin" dir="ltr">Polygon</a>
-        <a href="#networks" class="latin" dir="ltr">Avalanche</a>
-      </nav>
-      <nav aria-label="ارزها">
-        <p class="foot-head">رمزارزها</p>
-        <a href="#networks" class="latin" dir="ltr">USDT • USDC</a>
-        <a href="#networks" class="latin" dir="ltr">BUSD • DAI</a>
-        <a href="#networks" class="latin" dir="ltr">ETH • BTC</a>
-      </nav>
-    </div>
-    <div class="footer-bottom">
-      <div class="container">
-        <span>© <span class="latin" id="year">2026</span> <span class="latin">D-pay</span> — محصولی از اکوسیستم <span class="latin">Verexa</span></span>
-        <span class="latin dim">NEW SYSTEM EDITION</span>
-      </div>
-    </div>
-  </footer>
-
-  <!-- ===== Withdraw modal ===== -->
-  <div class="modal-backdrop" id="modalBackdrop" aria-hidden="true">
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-      <button class="modal-close" id="modalClose" aria-label="بستن">✕</button>
-      <h3 id="modalTitle">درخواست برداشت دستی</h3>
-      <p class="modal-sub">موجودی مستقیماً از قرارداد هوشمند درگاه به ولت شخصی شما منتقل می‌شود.</p>
-      <div class="modal-form">
-        <label>شبکه مقصد
-          <select id="wdNet" class="latin" dir="ltr">
-            <option>BSC — USDT</option>
-            <option>Ethereum — USDT</option>
-            <option>Polygon — USDC</option>
-          </select>
-        </label>
-        <label>مبلغ برداشت <span class="latin">(USDT)</span>
-          <input type="number" id="wdAmount" class="latin" value="250" min="1" />
-        </label>
-        <label>آدرس ولت شخصی
-          <input type="text" id="wdAddr" class="latin ltr" dir="ltr" value="0x7a…9f3c" />
-        </label>
-        <button class="btn btn-primary full" id="wdSubmit"><span>ثبت درخواست برداشت</span></button>
-        <p class="modal-demo">نسخه نمایشی — در محصول واقعی این درخواست روی بلاک‌چین ثبت و اجرا می‌شود.</p>
       </div>
     </div>
   </div>
 
-  <!-- ===== Toast ===== -->
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <!-- یکپارچه‌سازی -->
+  <div class="section" id="integrate">
+    <div class="section__in">
+      <header class="sec-head" data-reveal>
+        <p class="sec-eyebrow">D-PAY WEBPAYMENT GATEWAY</p>
+        <h2 class="sec-title">روش‌های یکپارچه‌سازی: افزونه ووکامرس و REST API</h2>
+      </header>
 
-  <button class="to-top" id="toTop" aria-label="بازگشت به بالا">
-    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5m0 0l-6 6m6-6l6 6"/></svg>
-  </button>
+      <div class="tabs" data-reveal>
+        <div class="tabs__nav" role="tablist" aria-label="روش‌های یکپارچه‌سازی">
+          <button class="tabs__btn is-on" role="tab" aria-selected="true" id="tab-woo" aria-controls="panel-woo" data-tab="woo">افزونه وردپرس و ووکامرس (WooCommerce)</button>
+          <button class="tabs__btn" role="tab" aria-selected="false" id="tab-api" aria-controls="panel-api" data-tab="api">فرآیند استعلام و تایید Web API</button>
+        </div>
 
-  <script src="assets/js/main.js" defer></script>
+        <div class="tabs__panel is-on" id="panel-woo" role="tabpanel" aria-labelledby="tab-woo">
+          <ol class="num-rows num-rows--light" role="list">
+            <li class="numrow"><span class="numrow__n">۱</span><p><b>دریافت افزونه</b>: دانلود فایل Zip افزونه رسمی D-pay WooCommerce.</p></li>
+            <li class="numrow"><span class="numrow__n">۲</span><p><b>نصب در وردپرس</b>: بارگذاری و فعال‌سازی افزونه در بخش افزونه‌های وردپرس.</p></li>
+            <li class="numrow"><span class="numrow__n">۳</span><p><b>ورود به تنظیمات</b>: مراجعه به پیکربندی درگاه در مسیر <code dir="ltr">WooCommerce &gt; Settings &gt; Payments</code>.</p></li>
+            <li class="numrow"><span class="numrow__n">۴</span><p><b>جای‌گذاری Merchant Code</b>: وارد کردن توکن فروشگاه و ذخیره‌سازی برای شروع پذیرش کریپتو.</p></li>
+          </ol>
+
+          <div class="wp-mock card" aria-hidden="true">
+            <p class="wp-mock__head"><span class="wp-mock__dots"><i></i><i></i><i></i></span><span class="wp-mock__path" dir="ltr">WooCommerce &gt; Settings &gt; Payments</span></p>
+            <div class="wp-row">
+              <div>
+                <p class="wp-row__t">D-pay Crypto Gateway <span class="demo-badge">موکاپ</span></p>
+                <p class="wp-row__d">پذیرش USDT، USDC، BUSD، DAI، ETH و BTC روی شبکه‌های EVM پشتیبانی‌شده.</p>
+              </div>
+              <span class="wp-toggle is-on"><i></i></span>
+            </div>
+            <div class="wp-row wp-row--field">
+              <label for="wpMerchant">Merchant Code</label>
+              <input id="wpMerchant" value="dp_9f3ac71e…c015 (نمایشی)" readonly dir="ltr">
+            </div>
+            <div class="wp-row wp-row--field">
+              <label for="wpCallback">Callback URL</label>
+              <input id="wpCallback" value="https://shop.example/dpay/callback (نمایشی)" readonly dir="ltr">
+            </div>
+            <button class="btn btn--soft" type="button" id="wpSave">ذخیره تغییرات</button>
+          </div>
+        </div>
+
+        <div class="tabs__panel" id="panel-api" role="tabpanel" aria-labelledby="tab-api" hidden>
+          <ul class="api-legend" role="list">
+            <li><b>1.</b> <span class="method" dir="ltr">POST /order/add</span> — دریافت کد ۲۰ و لینک درگاه.</li>
+            <li><b>2.</b> هدایت خریدار به Callback همراه کد اختصاصی Authority.</li>
+            <li><b>3.</b> <span class="method" dir="ltr">POST /order/verify</span> — تایید نهایی درگاه.</li>
+          </ul>
+          <p class="api-codes"><span class="code-chip ok">کد ۲۰ = پرداخت موفق</span><span class="code-chip bad">کد ۱۳ = ناموفق</span><span class="code-chip warn">کد ۲۱ = قبلا ثبت‌شده</span></p>
+
+          <div class="codecard">
+            <div class="codecard__head"><span class="method" dir="ltr">POST /order/add — Request</span><span class="demo-badge">نمایشی</span><button class="copybtn" type="button" data-copy="codeAdd">کپی</button></div>
+            <pre dir="ltr"><code id="codeAdd">POST https://api.dpay.example/v1/order/add
+Content-Type: application/json
+
+{
+  "amount": 20.00,
+  "currency": "USDT",
+  "network": "BSC",
+  "order_id": "ORD-1401",
+  "callback_url": "https://shop.example/dpay/callback",
+  "merchant_code": "dp_9f3ac71ec015"
+}</code></pre>
+          </div>
+          <div class="codecard">
+            <div class="codecard__head"><span class="method" dir="ltr">POST /order/add — Response</span><button class="copybtn" type="button" data-copy="codeAddRes">کپی</button></div>
+            <pre dir="ltr"><code id="codeAddRes">{
+  "code": 20,
+  "authority": "AUTH-8f3c91d4",
+  "gateway_url": "https://pay.dpay.example/p/8f3c91"
+}</code></pre>
+          </div>
+          <div class="codecard">
+            <div class="codecard__head"><span class="method" dir="ltr">POST /order/verify — Request / Response</span><button class="copybtn" type="button" data-copy="codeVerify">کپی</button></div>
+            <pre dir="ltr"><code id="codeVerify">POST https://api.dpay.example/v1/order/verify
+Content-Type: application/json
+
+{
+  "authority": "AUTH-8f3c91d4",
+  "merchant_code": "dp_9f3ac71ec015"
+}
+
+// 20 = پرداخت موفق | 13 = ناموفق | 21 = قبلا ثبت‌شده
+{ "code": 20 }</code></pre>
+          </div>
+          <p class="api-note"><span class="api-note__ic" aria-hidden="true">🛠</span> ماژول‌های اختصاصی: امکان توسعه ماژول‌های سفارشی توسط تیم فنی D-pay برای سیستم‌های اختصاصی.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- پنل نمایشی پذیرنده -->
+  <div class="section" id="merchant">
+    <div class="section__in">
+      <header class="sec-head" data-reveal>
+        <p class="sec-eyebrow"><span class="demo-badge">نمایشی</span>D-PAY WEBPAYMENT GATEWAY</p>
+        <h2 class="sec-title">داشبورد مدیریت درآمد و نحوه برداشت پذیرنده <span class="paren">(نسخه جدید)</span></h2>
+      </header>
+
+      <ul class="feature-strip" role="list" data-reveal>
+        <li class="fcard fcard--light"><p><b>گزارش‌گیری لحظه‌ای فروش‌ها</b>: مشاهده کامل سفارش‌ها، تراکنش‌های موفق و تاریخچه درآمدها در پنل پیشرفته پذیرنده.</p></li>
+        <li class="fcard fcard--light"><p><b>ذخیره‌سازی ایمن در قرارداد هوشمند</b>: مبالغ دریافتی از خریداران در محیط امن قرارداد هوشمند درگاه باقی می‌ماند.</p></li>
+        <li class="fcard fcard--light"><p><b>درخواست برداشت دستی (Manual Withdrawal)</b>: پذیرنده هر زمان که بخواهد از پنل درخواست برداشت ثبت می‌کند.</p></li>
+      </ul>
+
+      <div class="dash card" data-reveal>
+        <div class="dash__head">
+          <p class="dash__title">پنل پذیرنده <span class="demo-badge">نمایشی</span></p>
+          <p class="dash__shop">نام، توضیحات و لوگوی فروشگاه <span class="muted">— Demo Shop</span></p>
+        </div>
+        <div class="stats">
+          <div class="stat"><p class="stat__k">موجودی قابل برداشت</p><p class="stat__v" id="balanceV">۲٬۴۵۰٫۷۵</p><p class="stat__m">USDT روی شبکه BSC</p></div>
+          <div class="stat"><p class="stat__k">تراکنش‌های موفق</p><p class="stat__v" id="txCount">۱۸</p><p class="stat__m">در ۳۰ روز اخیر</p></div>
+          <div class="stat"><p class="stat__k">سفارش‌ها</p><p class="stat__v">۲۳</p><p class="stat__m">مشاهده کامل در تاریخچه</p></div>
+          <div class="stat stat--act">
+            <button class="btn btn--primary btn--wide" id="openWithdraw" type="button">
+              <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path d="M12 3v10m0 0 3.5-3.5M12 13 8.5 9.5M4 15v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              درخواست برداشت دستی
+            </button>
+            <p class="stat__m">مستقیماً به ولت شخصی شما</p>
+          </div>
+        </div>
+        <div class="tbl-wrap">
+          <table class="tbl">
+            <thead><tr><th>سفارش</th><th>خریدار</th><th>شبکه/ارز</th><th>مبلغ</th><th>وضعیت</th></tr></thead>
+            <tbody id="ordersBody">
+              <tr><td dir="ltr">ORD-1401</td><td>0x742f…9aC4</td><td>BSC · USDT</td><td dir="ltr">۲۰٫۰۰ $</td><td><span class="pill ok">موفق</span></td></tr>
+              <tr><td dir="ltr">ORD-1400</td><td>0x3a91…41eD</td><td>ETH · USDC</td><td dir="ltr">۵۹٫۹۰ $</td><td><span class="pill ok">موفق</span></td></tr>
+              <tr><td dir="ltr">ORD-1399</td><td>0x88b2…c07F</td><td>BSC · BUSD</td><td dir="ltr">۱۲۰٫۰۰ $</td><td><span class="pill wait">در انتظار تایید</span></td></tr>
+              <tr><td dir="ltr">ORD-1398</td><td>0x51ce…2f0a</td><td>Polygon · DAI</td><td dir="ltr">۳۴٫۵۰ $</td><td><span class="pill ok">موفق</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- جمع‌بندی -->
+  <div class="section section--end" id="wrapup">
+    <div class="section__in">
+      <div class="wrapup card" data-reveal>
+        <p class="sec-eyebrow sec-eyebrow--c">D-PAY WEBPAYMENT GATEWAY</p>
+        <h2 class="sec-title">درگاه پرداخت غیرمتمرکز <span class="grad">D-pay</span></h2>
+        <p class="sec-lead sec-lead--c">راهنمای جامع پذیرندگان و یکپارچه‌سازی درگاه Web3 (ویرایش جدید سیستم)</p>
+        <ul class="wrapup__chips" role="list">
+          <li>ورود با ولت Web3</li><li>ساخت فروشگاه بدون تایید ولت</li><li>برداشت دستی توسط پذیرنده</li><li>افزونه ووکامرس و REST API</li>
+        </ul>
+        <div class="wrapup__cta">
+          <button class="btn btn--primary" id="replayDeck" type="button">
+            <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path d="M4 10a8 8 0 1 1 2.3 5.7M4 10V5m0 5h5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            پخش دوباره ارائه
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="foot">
+    <span>D-pay — D-PAY WEBPAYMENT GATEWAY</span>
+    <span class="muted">وب‌سایتِ ارائه، ساخته‌شده از dpay_presentation-v3 · بدون وابستگی خارجی</span>
+  </footer>
+</section>
+</main>
+
+<!-- مودال برداشت دستی -->
+<div class="modal" id="wdModal" role="dialog" aria-modal="true" aria-labelledby="wdTitle" hidden>
+  <div class="modal__backdrop" data-close></div>
+  <div class="modal__box card">
+    <div id="wdForm">
+      <div class="modal__head">
+        <h3 id="wdTitle">درخواست برداشت دستی <span class="demo-badge">نمایشی</span></h3>
+        <button class="modal__x" type="button" data-close aria-label="بستن">✕</button>
+      </div>
+      <p class="modal__sub">موجودی (مثلاً USDT روی شبکه BSC) مستقیماً به ولت شخصی او منتقل می‌شود.</p>
+      <div class="grid2">
+        <div class="field">
+          <label for="wdNet">شبکه</label>
+          <select id="wdNet"><option>BNB Smart Chain (BSC)</option><option>Ethereum (ETH)</option><option>Polygon (MATIC)</option><option>Avalanche (AVAX)</option></select>
+        </div>
+        <div class="field">
+          <label for="wdCur">ارز</label>
+          <select id="wdCur"><option>USDT</option><option>USDC</option><option>BUSD</option><option>DAI</option></select>
+        </div>
+      </div>
+      <div class="field">
+        <label for="wdAddr">آدرس ولت مقصد</label>
+        <input id="wdAddr" type="text" dir="ltr" placeholder="0x…" spellcheck="false">
+      </div>
+      <div class="field">
+        <label for="wdAmt">مبلغ (USDT)</label>
+        <div class="amount-wrap">
+          <input id="wdAmt" type="number" inputmode="decimal" min="0.01" step="0.01" value="1200">
+          <button class="maxbtn" type="button" id="wdMax">حداکثر</button>
+        </div>
+        <p class="field__note">موجودی فعلی: <b id="wdAvail">۲٬۴۵۰٫۷۵</b> — کارمزد شبکه در این پنل نمایشی کسر نمی‌شود.</p>
+      </div>
+      <p class="field__err" id="wdErr" role="alert"></p>
+      <div class="modal__foot">
+        <button class="btn btn--ghost" type="button" data-close>انصراف</button>
+        <button class="btn btn--primary" type="button" id="wdSubmit">ثبت درخواست برداشت</button>
+      </div>
+    </div>
+
+    <div id="wdFlow" hidden>
+      <div class="modal__head"><h3>وضعیت درخواست <span class="demo-badge">شبیه‌سازی</span></h3></div>
+      <ol class="flow" id="wdSteps" role="list">
+        <li>ثبت درخواست در پنل پذیرنده</li>
+        <li>اعتبارسنجی آدرس و موجودی</li>
+        <li>ارسال به قرارداد هوشمند درگاه</li>
+        <li>تایید تراکنش روی شبکه</li>
+      </ol>
+      <div class="flowbar"><i id="wdBar"></i></div>
+      <div class="wd-done" id="wdDone" hidden>
+        <svg viewBox="0 0 24 24" width="44" height="44" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="none" stroke="#10B981" stroke-width="1.8"/><path d="m7.5 12.4 3 3 6-6.6" fill="none" stroke="#10B981" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <p class="wd-done__t">برداشت انجام شد <span class="muted">(نمایشی)</span></p>
+        <p class="wd-done__h" id="wdHash" dir="ltr">tx 0x8f3c…91d4 · BSC</p>
+        <button class="btn btn--primary" type="button" data-close>بستن</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="assets/js/main.js"></script>
 </body>
 </html>
