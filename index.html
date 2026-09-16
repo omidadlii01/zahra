@@ -18,9 +18,8 @@
       <defs><linearGradient id="bmg" x1="0" y1="0" x2="1" y2="1">
         <stop offset="0" stop-color="#38BDF8"/><stop offset="1" stop-color="#07C8DA"/>
       </linearGradient></defs>
-      <path d="M32 4 55 17v30L32 60 9 47V17Z" fill="none" stroke="url(#bmg)" stroke-width="4" stroke-linejoin="round"/>
-      <path d="M24 21h10c6 0 10 4.4 10 11s-4 11-10 11H24Z" fill="url(#bmg)"/>
-      <path d="M20 21h-1v22h1" stroke="url(#bmg)" stroke-width="3.4" stroke-linecap="round"/>
+      <path fill-rule="evenodd" fill="url(#bmg)" d="M18 6h16c11 0 20 8.5 20 19s-9 19-20 19H18V6Zm8 8v22h8c6.6 0 12-4.6 12-11s-5.4-11-12-11h-8Z"/>
+      <path fill="url(#bmg)" d="M1 58 14 38h16L17 58H1Z"/>
     </svg>
     <span class="site-nav__word">D-pay</span>
   </a>
@@ -45,9 +44,8 @@
           <defs><linearGradient id="bmg2" x1="0" y1="0" x2="1" y2="1">
             <stop offset="0" stop-color="#38BDF8"/><stop offset="1" stop-color="#07C8DA"/>
           </linearGradient></defs>
-          <path d="M32 4 55 17v30L32 60 9 47V17Z" fill="none" stroke="url(#bmg2)" stroke-width="4" stroke-linejoin="round"/>
-          <path d="M24 21h10c6 0 10 4.4 10 11s-4 11-10 11H24Z" fill="url(#bmg2)"/>
-          <path d="M20 21h-1v22h1" stroke="url(#bmg2)" stroke-width="3.4" stroke-linecap="round"/>
+          <path fill-rule="evenodd" fill="url(#bmg2)" d="M18 6h16c11 0 20 8.5 20 19s-9 19-20 19H18V6Zm8 8v22h8c6.6 0 12-4.6 12-11s-5.4-11-12-11h-8Z"/>
+          <path fill="url(#bmg2)" d="M1 58 14 38h16L17 58H1Z"/>
         </svg>
         <span class="deck-brand__txt">D-pay<em>WEBPAYMENT GATEWAY</em></span>
       </div>
@@ -295,7 +293,7 @@
       <!-- ۱۳) صحنه پایانی -->
       <section class="scene scene--cover scene--end" data-slide="6" style="--acc:#07C8DA" aria-hidden="true">
         <div class="scene-fit">
-          <p class="scene-kicker stg"><span class="k-slide">پایان ارائه</span></p>
+          <p class="scene-eyebrow stg">D-PAY WEBPAYMENT GATEWAY</p>
           <h2 class="cover-title stg">درگاه پرداخت غیرمتمرکز <span class="grad">D-pay</span></h2>
           <p class="cover-sub stg">راهنمای جامع پذیرندگان و یکپارچه‌سازی درگاه Web3 <span class="paren">(ویرایش جدید سیستم)</span></p>
           <div class="end-cta stg">
@@ -389,7 +387,7 @@
 
         <div class="lab__out card" aria-live="polite">
           <div class="lab__live"><span class="pulse"></span> به‌روزرسانی نرخ‌ها — <b>شبیه‌سازی لحظه‌ای (نمایشی)</b></div>
-          <p class="lab__label">خریدار در ولت خود می‌بیند</p>
+          <p class="lab__label">معادل کریپتویی سبد خرید</p>
           <p class="lab__pay" id="labPay"><b id="labAmt">۲۰٫۰۰</b><span id="labCur">USDT</span></p>
           <dl class="lab__rows">
             <div><dt>مبلغ فاکتور</dt><dd id="labUsd">۲۰٫۰۰ $</dd></div>
@@ -425,32 +423,32 @@
             <li class="numrow"><span class="numrow__n">۴</span><p><b>جای‌گذاری Merchant Code</b>: وارد کردن توکن فروشگاه و ذخیره‌سازی برای شروع پذیرش کریپتو.</p></li>
           </ol>
 
-          <div class="wp-mock card" aria-hidden="true">
-            <p class="wp-mock__head"><span class="wp-mock__dots"><i></i><i></i><i></i></span><span class="wp-mock__path" dir="ltr">WooCommerce &gt; Settings &gt; Payments</span></p>
+          <div class="wp-mock card">
+            <p class="wp-mock__head"><span class="wp-mock__dots"><i></i><i></i><i></i></span><span class="wp-mock__path" dir="ltr">WooCommerce &gt; Settings &gt; Payments</span><span class="demo-badge">موکاپ</span></p>
             <div class="wp-row">
               <div>
-                <p class="wp-row__t">D-pay Crypto Gateway <span class="demo-badge">موکاپ</span></p>
-                <p class="wp-row__d">پذیرش USDT، USDC، BUSD، DAI، ETH و BTC روی شبکه‌های EVM پشتیبانی‌شده.</p>
+                <p class="wp-row__t">افزونه رسمی D-pay WooCommerce</p>
+                <p class="wp-row__d">پشتیبانی کامل از USDT، USDC، BUSD و DAI روی تمام شبکه‌های فعال.</p>
               </div>
-              <span class="wp-toggle is-on"><i></i></span>
+              <button class="wp-toggle is-on" type="button" aria-pressed="true" aria-label="فعال‌سازی درگاه"><i></i></button>
             </div>
             <div class="wp-row wp-row--field">
               <label for="wpMerchant">Merchant Code</label>
-              <input id="wpMerchant" value="dp_9f3ac71e…c015 (نمایشی)" readonly dir="ltr">
+              <input id="wpMerchant" value="dp_9f3ac71e…c015 (نمایشی)" tabindex="-1" readonly dir="ltr">
             </div>
             <div class="wp-row wp-row--field">
               <label for="wpCallback">Callback URL</label>
-              <input id="wpCallback" value="https://shop.example/dpay/callback (نمایشی)" readonly dir="ltr">
+              <input id="wpCallback" value="https://shop.example/dpay/callback (نمایشی)" tabindex="-1" readonly dir="ltr">
             </div>
-            <button class="btn btn--soft" type="button" id="wpSave">ذخیره تغییرات</button>
+            <button class="btn btn--soft" type="button" id="wpSave">ذخیره تغییرات <span class="muted">(نمایشی)</span></button>
           </div>
         </div>
 
         <div class="tabs__panel" id="panel-api" role="tabpanel" aria-labelledby="tab-api" hidden>
           <ul class="api-legend" role="list">
-            <li><b>1.</b> <span class="method" dir="ltr">POST /order/add</span> — دریافت کد ۲۰ و لینک درگاه.</li>
-            <li><b>2.</b> هدایت خریدار به Callback همراه کد اختصاصی Authority.</li>
-            <li><b>3.</b> <span class="method" dir="ltr">POST /order/verify</span> — تایید نهایی درگاه.</li>
+            <li><b>1.</b> <span class="method" dir="ltr">POST /order/add</span><b>: ارسال مبلغ، callback، شماره سفارش و merchant_code</b> -&gt; دریافت کد ۲۰ و لینک درگاه.</li>
+            <li><b>2.</b> <b>هدایت خریدار به Callback</b>: پس از پرداخت، درگاه خریدار را همراه کد اختصاصی Authority به آدرس Callback برمی‌گرداند.</li>
+            <li><b>3.</b> <span class="method" dir="ltr">POST /order/verify</span><b>: ارسال کد Authority جهت تایید نهایی درگاه</b> (کد ۲۰ = پرداخت موفق، کد ۱۳ = ناموفق، کد ۲۱ = قبلا ثبت‌شده).</li>
           </ul>
           <p class="api-codes"><span class="code-chip ok">کد ۲۰ = پرداخت موفق</span><span class="code-chip bad">کد ۱۳ = ناموفق</span><span class="code-chip warn">کد ۲۱ = قبلا ثبت‌شده</span></p>
 
@@ -492,6 +490,30 @@ Content-Type: application/json
           <p class="api-note"><span class="api-note__ic" aria-hidden="true">🛠</span> ماژول‌های اختصاصی: امکان توسعه ماژول‌های سفارشی توسط تیم فنی D-pay برای سیستم‌های اختصاصی.</p>
         </div>
       </div>
+
+      <div class="checklist card" data-reveal>
+        <div class="checklist__head">
+          <div>
+            <p class="sec-eyebrow">D-PAY WEBPAYMENT GATEWAY</p>
+            <h3 class="checklist__title">فرآیند ۴ مرحله‌ای ساخت و تنظیمات فروشگاه + مسیر افزونه ووکامرس</h3>
+          </div>
+          <div class="checklist__meter">
+            <p class="checklist__count"><b id="ckDone">۰</b><span>/</span><span>۸</span></p>
+            <div class="checklist__bar"><i id="ckBar"></i></div>
+            <button class="btn btn--soft" id="ckReset" type="button">پاک کردن</button>
+          </div>
+        </div>
+        <ul class="checklist__items" id="ckList" role="list">
+          <li><label><input type="checkbox" data-ck="0"><span class="ckbox" aria-hidden="true"></span><span class="cktxt"><b>مرحله ۱</b> ورود با ولت Web3: ورود و ثبت‌نام در داشبورد D-pay به وسیله متامسک یا ولت‌کانکت.</span></label></li>
+          <li><label><input type="checkbox" data-ck="1"><span class="ckbox" aria-hidden="true"></span><span class="cktxt"><b>مرحله ۲</b> افزودن فروشگاه: انتخاب Add Shop و ثبت نام، توضیحات و لوگوی فروشگاه.</span></label></li>
+          <li><label><input type="checkbox" data-ck="2"><span class="ckbox" aria-hidden="true"></span><span class="cktxt"><b>مرحله ۳</b> لیست سفید دامنه‌ها: وارد کردن دامنه‌های مجاز (Whitelist Domain).</span></label></li>
+          <li><label><input type="checkbox" data-ck="3"><span class="ckbox" aria-hidden="true"></span><span class="cktxt"><b>مرحله ۴</b> دریافت Merchant Token: پیکربندی ارزهای فعال و دریافت Token / Code اختصاصی فروشگاه.</span></label></li>
+          <li><label><input type="checkbox" data-ck="4"><span class="ckbox" aria-hidden="true"></span><span class="cktxt"><b>ووکامرس ۱</b> دریافت افزونه: دانلود فایل Zip افزونه رسمی D-pay WooCommerce.</span></label></li>
+          <li><label><input type="checkbox" data-ck="5"><span class="ckbox" aria-hidden="true"></span><span class="cktxt"><b>ووکامرس ۲</b> نصب در وردپرس: بارگذاری و فعال‌سازی افزونه.</span></label></li>
+          <li><label><input type="checkbox" data-ck="6"><span class="ckbox" aria-hidden="true"></span><span class="cktxt"><b>ووکامرس ۳</b> ورود به تنظیمات: پیکربندی درگاه در مسیر WooCommerce &gt; Settings &gt; Payments.</span></label></li>
+          <li><label><input type="checkbox" data-ck="7"><span class="ckbox" aria-hidden="true"></span><span class="cktxt"><b>ووکامرس ۴</b> جای‌گذاری Merchant Code: وارد کردن توکن فروشگاه و ذخیره‌سازی برای شروع پذیرش کریپتو.</span></label></li>
+        </ul>
+      </div>
     </div>
   </div>
 
@@ -504,20 +526,20 @@ Content-Type: application/json
       </header>
 
       <ul class="feature-strip" role="list" data-reveal>
-        <li class="fcard fcard--light"><p><b>گزارش‌گیری لحظه‌ای فروش‌ها</b>: مشاهده کامل سفارش‌ها، تراکنش‌های موفق و تاریخچه درآمدها در پنل پیشرفته پذیرنده.</p></li>
-        <li class="fcard fcard--light"><p><b>ذخیره‌سازی ایمن در قرارداد هوشمند</b>: مبالغ دریافتی از خریداران در محیط امن قرارداد هوشمند درگاه باقی می‌ماند.</p></li>
-        <li class="fcard fcard--light"><p><b>درخواست برداشت دستی (Manual Withdrawal)</b>: پذیرنده هر زمان که بخواهد از پنل درخواست برداشت ثبت می‌کند.</p></li>
+        <li class="fcard fcard--light" style="--c:#07C8DA"><p><b>گزارش‌گیری لحظه‌ای فروش‌ها</b>: مشاهده کامل سفارش‌ها، تراکنش‌های موفق و تاریخچه درآمدها در پنل پیشرفته پذیرنده.</p></li>
+        <li class="fcard fcard--light" style="--c:#10B981"><p><b>ذخیره‌سازی ایمن در قرارداد هوشمند</b>: مبالغ دریافتی از خریداران در محیط امن قرارداد هوشمند درگاه باقی می‌ماند.</p></li>
+        <li class="fcard fcard--light" style="--c:#F59E0B"><p><b>درخواست برداشت دستی (Manual Withdrawal)</b>: پذیرنده هر زمان که بخواهد می‌تواند از داخل پنل خود درخواست برداشت ثبت کند تا موجودی (مثلاً USDT روی شبکه BSC) مستقیماً به ولت شخصی او منتقل شود.</p></li>
       </ul>
 
       <div class="dash card" data-reveal>
         <div class="dash__head">
           <p class="dash__title">پنل پذیرنده <span class="demo-badge">نمایشی</span></p>
-          <p class="dash__shop">نام، توضیحات و لوگوی فروشگاه <span class="muted">— Demo Shop</span></p>
+          <button class="btn btn--soft" id="exportCsv" type="button">گزارش‌گیری لحظه‌ای — خروجی CSV</button>
         </div>
         <div class="stats">
-          <div class="stat"><p class="stat__k">موجودی قابل برداشت</p><p class="stat__v" id="balanceV">۲٬۴۵۰٫۷۵</p><p class="stat__m">USDT روی شبکه BSC</p></div>
-          <div class="stat"><p class="stat__k">تراکنش‌های موفق</p><p class="stat__v" id="txCount">۱۸</p><p class="stat__m">در ۳۰ روز اخیر</p></div>
-          <div class="stat"><p class="stat__k">سفارش‌ها</p><p class="stat__v">۲۳</p><p class="stat__m">مشاهده کامل در تاریخچه</p></div>
+          <div class="stat"><p class="stat__k">موجودی قابل برداشت</p><p class="stat__v" id="balanceV">۲٬۵۰٫۷۵</p><p class="stat__m">USDT روی شبکه BSC</p></div>
+          <div class="stat"><p class="stat__k">تراکنش‌های موفق</p><p class="stat__v" id="txCount">۱۸</p><p class="stat__m">تاریخچه درآمدها</p></div>
+          <div class="stat"><p class="stat__k">سفارش‌ها</p><p class="stat__v">۲۳</p><p class="stat__m">مشاهده کامل سفارش‌ها</p></div>
           <div class="stat stat--act">
             <button class="btn btn--primary btn--wide" id="openWithdraw" type="button">
               <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path d="M12 3v10m0 0 3.5-3.5M12 13 8.5 9.5M4 15v4a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -551,21 +573,23 @@ Content-Type: application/json
         <ul class="wrapup__chips" role="list">
           <li>ورود با ولت Web3</li><li>ساخت فروشگاه بدون تایید ولت</li><li>برداشت دستی توسط پذیرنده</li><li>افزونه ووکامرس و REST API</li>
         </ul>
+        <p class="wrapup__collab"><span aria-hidden="true">🛠</span> <b>ماژول‌های اختصاصی</b>: امکان توسعه ماژول‌های سفارشی توسط تیم فنی D-pay برای سیستم‌های اختصاصی.</p>
         <div class="wrapup__cta">
           <button class="btn btn--primary" id="replayDeck" type="button">
             <svg viewBox="0 0 24 24" width="17" height="17" aria-hidden="true"><path d="M4 10a8 8 0 1 1 2.3 5.7M4 10V5m0 5h5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
             پخش دوباره ارائه
           </button>
+          <a class="btn btn--ghost" href="#integrate" data-scroll>مسیر یکپارچه‌سازی را بازبینی کنید</a>
         </div>
       </div>
     </div>
   </div>
-
-  <footer class="foot">
-    <span>D-pay — D-PAY WEBPAYMENT GATEWAY</span>
-    <span class="muted">وب‌سایتِ ارائه، ساخته‌شده از dpay_presentation-v3 · بدون وابستگی خارجی</span>
-  </footer>
 </section>
+
+<footer class="foot">
+  <span>D-pay — D-PAY WEBPAYMENT GATEWAY</span>
+  <span class="muted">راهنمای جامع پذیرندگان و یکپارچه‌سازی درگاه Web3 (ویرایش جدید سیستم)</span>
+</footer>
 </main>
 
 <!-- مودال برداشت دستی -->
@@ -610,10 +634,10 @@ Content-Type: application/json
     <div id="wdFlow" hidden>
       <div class="modal__head"><h3>وضعیت درخواست <span class="demo-badge">شبیه‌سازی</span></h3></div>
       <ol class="flow" id="wdSteps" role="list">
-        <li>ثبت درخواست در پنل پذیرنده</li>
-        <li>اعتبارسنجی آدرس و موجودی</li>
-        <li>ارسال به قرارداد هوشمند درگاه</li>
-        <li>تایید تراکنش روی شبکه</li>
+        <li>ثبت درخواست برداشت از داخل پنل</li>
+        <li>بررسی موجودی، شبکه و مبلغ</li>
+        <li>ذخیره‌سازی ایمن در قرارداد هوشمند درگاه</li>
+        <li>تراکنش روی بلاک‌چین ثبت و سفارش نهایی می‌شود</li>
       </ol>
       <div class="flowbar"><i id="wdBar"></i></div>
       <div class="wd-done" id="wdDone" hidden>

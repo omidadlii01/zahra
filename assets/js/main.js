@@ -45,6 +45,7 @@ deck.style.setProperty('--n', N);
 sceneTot.textContent = toFa(N);
 
 var idx = -1;
+var booted = false;
 var scaleMap = new WeakMap();
 
 function stepH()   { return stage.getBoundingClientRect().height || window.innerHeight; }
@@ -62,8 +63,9 @@ function fitScene(sc) {
   var padY = parseFloat(cs.paddingTop) + parseFloat(cs.paddingBottom);
   var availW = Math.max(80, scenesBox.clientWidth - padX - 4);
   var availH = Math.max(80, scenesBox.clientHeight - padY - 4);
-  var r = fit.getBoundingClientRect();
-  var s = Math.min(1.02, availW / r.width, availH / r.height);
+  var w = fit.offsetWidth, h = fit.offsetHeight;
+  if (!w || !h) { scaleMap.set(fit, 1); return; }
+  var s = Math.min(1.02, availW / w, availH / h);
   if (!isFinite(s)) s = 1;
   s = Math.max(0.32, s);
   scaleMap.set(fit, s);
@@ -107,7 +109,7 @@ function activate(i, dir) {
   if (i === N - 1) { btnNext.title = 'ورود به بخش تعاملی'; btnNext.setAttribute('aria-label', btnNext.title); }
   btnPrev.title = (i === 0 ? 'بالای صفحه' : 'صحنه قبلی');
 
-  if (!first && dir !== 'init' && !reduceMotion) {
+  if (!first && booted && dir !== 'init' && !reduceMotion) {
     sweep.classList.remove('run');
     void sweep.offsetWidth;
     sweep.classList.add('run');
@@ -126,13 +128,13 @@ function render() {
   if (scenes[i]) { scenes[i]._sp = Math.min(1, sp); if (i === idx) applyFit(scenes[i]); }
   if (i !== idx) activate(i, i > idx ? 1 : -1);
   progBar.style.width = (Math.max(0, Math.min(1, t / (N * step))) * 100).toFixed(2) + '%';
-  siteNav.classList.toggle('is-show', t > step * 0.7);
+  siteNav.classList.toggle('is-show', t > N * step - 90);
 }
 function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(render); } }
 
-function goTo(i) {
+function goTo(i, instant) {
   i = Math.max(0, Math.min(N - 1, i));
-  window.scrollTo({ top: Math.round(deckTop() + i * stepH()) + 1, behavior: smooth });
+  window.scrollTo({ top: Math.round(deckTop() + i * stepH()) + 1, behavior: instant || reduceMotion ? 'auto' : 'smooth' });
 }
 
 /* — کنترل‌ها: قبلی/بعدی، تیک‌های پرش به ۶ اسلاید، کیبورد — */
@@ -150,6 +152,8 @@ ticks.forEach(function (t) {
 });
 document.addEventListener('keydown', function (e) {
   if (e.ctrlKey || e.metaKey || e.altKey) return;
+  var tag = (e.target && e.target.tagName) || '';
+  if (/^(INPUT|SELECT|TEXTAREA)$/.test(tag)) return;
   if (!modalEl || !modalEl.hidden) return;
   var step = stepH(), t = within();
   if (t < -60 || t > N * step + 60) return;             // دک در دید نیست
@@ -181,7 +185,7 @@ function fromHash() {
   } else v -= 1;
   if (v < 0 || v > N - 1) return false;
   activate(0, 'init');
-  goTo(v);
+  goTo(v, true);
   return true;
 }
 window.addEventListener('hashchange', fromHash);
@@ -268,8 +272,8 @@ setInterval(function () {
 labCalc();
 
 /* ═══════════════ تب‌های یکپارچه‌سازی ═══════════════ */
-$$('.tabs__btn').forEach(function (b) {
-  b.addEventListener('click', function () {
+var tabBtns = $$('.tabs__btn');
+function activateTab(b) {
     $$('.tabs__btn').forEach(function (x) {
       var on = x === b;
       x.classList.toggle('is-on', on);
@@ -280,6 +284,19 @@ $$('.tabs__btn').forEach(function (b) {
       p.classList.toggle('is-on', on);
       p.hidden = !on;
     });
+}
+tabBtns.forEach(function (b) {
+  b.addEventListener('click', function () { activateTab(b); });
+  b.addEventListener('keydown', function (e) {
+    var i = tabBtns.indexOf(b), n = tabBtns.length, k = -1;
+    if (e.key === 'ArrowLeft')  k = (i + 1) % n;
+    if (e.key === 'ArrowRight') k = (i - 1 + n) % n;
+    if (e.key === 'Home') k = 0;
+    if (e.key === 'End')  k = n - 1;
+    if (k < 0) return;
+    e.preventDefault();
+    activateTab(tabBtns[k]);
+    tabBtns[k].focus();
   });
 });
 
@@ -315,7 +332,10 @@ function legacyCopy(txt, done) {
 
 /* — موکاپ تنظیمات ووکامرس — */
 var wpToggle = $('.wp-toggle');
-if (wpToggle) wpToggle.addEventListener('click', function () { wpToggle.classList.toggle('is-on'); });
+if (wpToggle) wpToggle.addEventListener('click', function () {
+  var on = wpToggle.classList.toggle('is-on');
+  wpToggle.setAttribute('aria-pressed', on ? 'true' : 'false');
+});
 var wpSave = $('#wpSave');
 if (wpSave) wpSave.addEventListener('click', function () { toast('تنظیمات ذخیره شد (نمایشی)'); });
 
@@ -450,6 +470,57 @@ function toast(msg) {
   toastT = setTimeout(function () { toastEl.classList.remove('show'); }, 2600);
 }
 
+
+/* ═══════════════ چک‌لیست راه‌اندازی (محفوظ در همان مرورگر) ═══════════════ */
+var ckList = $('#ckList');
+if (ckList) {
+  var ckBoxes = $$('input[data-ck]', ckList);
+  var ckWrap  = $('.checklist');
+  var CKKEY   = 'dpay-checklist-v1';
+  function ckSave() {
+    try { localStorage.setItem(CKKEY, ckBoxes.map(function (b) { return b.checked ? '1' : '0'; }).join('')); } catch (e) {}
+  }
+  function ckRender() {
+    var d = ckBoxes.filter(function (b) { return b.checked; }).length;
+    $('#ckDone').textContent = toFa(d);
+    $('#ckBar').style.width = (d / ckBoxes.length) * 100 + '%';
+    ckWrap.classList.toggle('is-full', d === ckBoxes.length);
+  }
+  try {
+    var st = localStorage.getItem(CKKEY);
+    if (st && st.length === ckBoxes.length) ckBoxes.forEach(function (b, k) { b.checked = st[k] === '1'; });
+  } catch (e) {}
+  ckBoxes.forEach(function (b) { b.addEventListener('change', function () { ckRender(); ckSave(); }); });
+  ckRender();
+  $('#ckReset').addEventListener('click', function () {
+    ckBoxes.forEach(function (b) { b.checked = false; });
+    ckRender(); ckSave();
+    toast('چک‌لیست پاک شد');
+  });
+}
+
+/* ═══════════════ گزارش‌گیری: خروجی CSV از پنل نمایشی ═══════════════ */
+var csvBtn = $('#exportCsv');
+if (csvBtn) csvBtn.addEventListener('click', function () {
+  var rows = [['ORDER', 'ADDRESS', 'NETWORK', 'AMOUNT', 'STATUS']];
+  $$('#ordersBody tr').forEach(function (tr) {
+    rows.push($$('td', tr).map(function (td) { return td.textContent.trim(); }));
+  });
+  var csv = '\uFEFF' + rows.map(function (r) {
+    return r.map(function (c) { return '"' + c.replace(/"/g, '""') + '"'; }).join(',');
+  }).join('\r\n');
+  try {
+    var blob = new Blob([csv], { type: 'text/csv;charset=utf-8' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'dpay-report-demo.csv';
+    document.body.appendChild(a);
+    a.click();
+    setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 800);
+    toast('گزارش CSV ساخته شد (نمایشی)');
+  } catch (e) { toast('امکان دانلود در این مرورگر نیست'); }
+});
+
 /* — جمع‌بندی: پخش دوباره ارائه — */
 $('#replayDeck').addEventListener('click', function () {
   window.scrollTo({ top: Math.round(deckTop()), behavior: smooth });
@@ -458,5 +529,6 @@ $('#replayDeck').addEventListener('click', function () {
 /* — شروع — */
 activate(0, 'init');
 render();
+booted = true;
 if (location.hash) fromHash();
 })();

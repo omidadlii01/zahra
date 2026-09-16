@@ -21,6 +21,9 @@
 :root {
   --bg0:#04070D; --bg1:#0F172A;
   --acc:#07C8DA; --sky:#38BDF8; --green:#10B981; --amber:#F59E0B;
+  /* رنگ‌های رسمی Sub-Brand D-pay (دفتر هویت Verexa): BASE #07c8da + ثانویه */
+  --dp-deep:#005c7e; --dp-pine:#1f7461; --dp-orange:#ff8c40;
+  --dp-n1:#a7a9ac; --dp-n2:#c7c8ca; --dp-n3:#dcddde;
   --ink:#EAF7FB; --ink-2:#9FB6C4; --ink-3:#5C7488;
   --line:rgba(148,196,214,.14);
   --card:linear-gradient(160deg, rgba(15,23,42,.86), rgba(9,14,26,.72));
@@ -34,7 +37,7 @@
 html { -webkit-text-size-adjust:100%; scroll-behavior:auto; }
 body {
   margin:0; direction:rtl; color:var(--ink);
-  font:400 16px/1.9 'Peyda','Montserrat',system-ui,-apple-system,'Segoe UI',Tahoma,sans-serif;
+  font:400 17px/1.95 'Montserrat','Peyda',system-ui,-apple-system,'Segoe UI',Tahoma,sans-serif;
   background:
     radial-gradient(1100px 620px at 82% -6%, rgba(7,200,218,.09), transparent 62%),
     radial-gradient(900px 560px at 8% 108%, rgba(56,189,248,.07), transparent 60%),
@@ -101,7 +104,7 @@ img,svg { display:block; max-width:100%; }
 }
 .site-nav.is-show { transform:none; }
 .site-nav__brand { display:flex; align-items:center; gap:10px; }
-.site-nav__word { font-family:'Montserrat'; font-weight:800; letter-spacing:.02em; font-size:1.05rem; }
+.site-nav__word { font-family:'Montserrat'; font-weight:800; letter-spacing:.08em; font-size:1.05rem; }
 .site-nav__links { display:flex; gap:4px; flex-wrap:wrap; justify-content:flex-end; }
 .site-nav__links a {
   font-size:.8rem; font-weight:500; color:var(--ink-2); padding:7px 13px; border-radius:99px;
@@ -137,10 +140,10 @@ img,svg { display:block; max-width:100%; }
 .deck-topbar {
   position:absolute; inset-inline:0; top:0; z-index:9;
   display:flex; align-items:center; justify-content:space-between; gap:12px;
-  padding:clamp(10px,1.8vh,16px) clamp(12px,2.6vw,30px);
+  padding:calc(clamp(10px,1.8vh,16px) + env(safe-area-inset-top,0px)) clamp(12px,2.6vw,30px) clamp(10px,1.8vh,16px);
 }
 .deck-brand { display:flex; align-items:center; gap:10px; min-width:0; }
-.deck-brand__txt { display:flex; flex-direction:column; line-height:1.15; font-family:'Montserrat'; font-weight:800; font-size:1.02rem; }
+.deck-brand__txt { display:flex; flex-direction:column; line-height:1.15; font-family:'Montserrat'; font-weight:800; font-size:1.02rem; letter-spacing:.06em; }
 .deck-brand__txt em {
   font-style:normal; font-weight:500; font-size:.52rem; letter-spacing:.24em;
   color:var(--ink-3); text-transform:uppercase;
@@ -174,7 +177,7 @@ img,svg { display:block; max-width:100%; }
 /* — کروم پایین — */
 .deck-bottombar {
   position:absolute; inset-inline:0; bottom:0; z-index:9;
-  padding:0 clamp(12px,2.6vw,30px) clamp(10px,1.6vh,16px);
+  padding:0 clamp(12px,2.6vw,30px) calc(clamp(10px,1.6vh,16px) + env(safe-area-inset-bottom,0px));
   display:flex; flex-direction:column; gap:10px;
 }
 .deck-hint {
@@ -298,7 +301,7 @@ img,svg { display:block; max-width:100%; }
   background:rgba(148,196,214,.07); border:1px solid var(--line); margin-bottom:12px; }
 .fcard p { font-weight:700; font-size:clamp(.95rem,1.8vh + .3vw,1.15rem); line-height:1.8; }
 .fcard__no {
-  position:absolute; inset-inline-end:16px; top:8px; font-family:'Montserrat'; font-weight:800; font-size:2.1rem;
+  position:absolute; inset-inline-end:16px; top:8px; font-family:'Peyda','Montserrat'; font-weight:800; font-size:2.1rem;
   color:transparent; -webkit-text-stroke:1px rgba(148,196,214,.25); pointer-events:none;
 }
 
@@ -319,7 +322,7 @@ img,svg { display:block; max-width:100%; }
 }
 .bigcard__head { display:flex; flex-direction:column; gap:8px; }
 .bigcard__no {
-  font-family:'Montserrat'; font-weight:800; font-size:clamp(2.6rem,8vh,4.2rem); line-height:1;
+  font-family:'Peyda','Montserrat'; font-weight:800; font-size:clamp(2.6rem,8vh,4.2rem); line-height:1;
   color:transparent; -webkit-text-stroke:1.5px rgba(148,196,214,.4);
   -webkit-text-stroke:1.5px color-mix(in srgb, var(--c, var(--acc)) 60%, transparent);
 }
@@ -445,7 +448,7 @@ img,svg { display:block; max-width:100%; }
   border-top:1px solid rgba(7,200,218,.25);
   box-shadow:0 -30px 80px -40px rgba(7,200,218,.25);
 }
-.section { padding:clamp(56px,9vw,110px) 0; }
+.section { padding:clamp(56px,9vw,110px) 0; scroll-margin-top:66px; }
 .section__in { width:min(1180px, 92%); margin-inline:auto; }
 .sec-head { display:flex; flex-direction:column; gap:10px; margin-bottom:clamp(22px,4vw,38px); }
 .sec-eyebrow { display:flex; align-items:center; gap:14px; flex-wrap:wrap;
@@ -491,7 +494,8 @@ img,svg { display:block; max-width:100%; }
 .chips button.is-on { color:#02222a; background:linear-gradient(96deg, var(--acc), #2ee6f5); border-color:transparent; box-shadow:0 6px 18px -8px rgba(7,200,218,.6); }
 .chips--cur button { font-family:'Montserrat'; font-weight:700; letter-spacing:.03em; }
 .lab__out { display:flex; flex-direction:column; gap:14px; background:
-  radial-gradient(140% 100% at 100% 0%, rgba(7,200,218,.08), transparent 55%), var(--card); }
+  radial-gradient(140% 100% at 100% 0%, rgba(7,200,218,.08), transparent 55%),
+  radial-gradient(120% 90% at 0% 100%, rgba(0,92,126,.35), transparent 60%), var(--card); }
 .lab__live { display:flex; align-items:center; gap:9px; font-size:.74rem; color:var(--ink-3); }
 .lab__live b { color:var(--green); font-weight:600; }
 .pulse { width:9px; height:9px; border-radius:50%; background:var(--green); box-shadow:0 0 0 0 rgba(16,185,129,.5); animation:pulse 1.8s infinite; }
@@ -533,7 +537,7 @@ img,svg { display:block; max-width:100%; }
 .wp-row { display:flex; align-items:center; justify-content:space-between; gap:18px; padding:16px 18px; border-bottom:1px solid rgba(148,196,214,.07); }
 .wp-row__t { font-weight:800; display:flex; align-items:center; }
 .wp-row__d { font-size:.78rem; color:var(--ink-3); line-height:1.9; }
-.wp-toggle { position:relative; width:52px; height:28px; border-radius:99px; background:#22314B; transition:background .3s; flex:0 0 auto; cursor:pointer; }
+.wp-toggle { position:relative; width:52px; height:28px; border-radius:99px; background:#22314B; transition:background .3s; flex:0 0 auto; cursor:pointer; padding:0; }
 .wp-toggle i { position:absolute; top:3px; inset-inline-start:3px; width:22px; height:22px; border-radius:50%; background:#7A8FAD; transition:all .3s var(--fx); }
 .wp-toggle.is-on { background:rgba(16,185,129,.35); }
 .wp-toggle.is-on i { inset-inline-start:27px; background:var(--green); box-shadow:0 0 12px rgba(16,185,129,.8); }
@@ -573,7 +577,7 @@ img,svg { display:block; max-width:100%; }
 .fcard--light p { font-size:.9rem; font-weight:400; color:var(--ink-2); line-height:2; }
 .fcard--light b { color:var(--acc); font-weight:800; }
 .dash { padding:clamp(14px,2.6vw,26px); }
-.dash__head { display:flex; justify-content:space-between; align-items:baseline; gap:14px; flex-wrap:wrap; margin-bottom:16px; }
+.dash__head { display:flex; justify-content:space-between; align-items:center; gap:14px; flex-wrap:wrap; margin-bottom:16px; }
 .dash__title { font-weight:900; font-size:1.06rem; }
 .dash__shop { font-size:.78rem; }
 .stats { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(210px,100%),1fr)); gap:12px; }
@@ -618,7 +622,7 @@ img,svg { display:block; max-width:100%; }
 .modal[hidden] { display:none; }
 .modal__backdrop { position:absolute; inset:0; background:rgba(2,5,10,.72); backdrop-filter:blur(8px); -webkit-backdrop-filter:blur(8px); animation:fadeIn .3s ease; }
 @keyframes fadeIn { from { opacity:0; } }
-.modal__box { position:relative; width:min(560px,100%); max-height:min(88svh, 720px); overflow:auto;
+.modal__box { position:relative; width:min(560px,100%); max-height:88vh; max-height:min(88svh, 720px); overflow:auto;
   animation:popIn .45s var(--fx); border-color:rgba(7,200,218,.3); box-shadow:0 50px 120px -40px rgba(0,0,0,.9), 0 0 60px -30px rgba(7,200,218,.4); }
 @keyframes popIn { from { opacity:0; transform:translateY(26px) scale(.97); } }
 .modal__head { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:6px; }
@@ -655,6 +659,55 @@ img,svg { display:block; max-width:100%; }
 }
 .toast.show { opacity:1; transform:none; }
 
+
+/* — چک‌لیست راه‌اندازی — */
+.checklist { margin-top:clamp(16px,3vw,26px); }
+.checklist__head { display:flex; justify-content:space-between; align-items:flex-start; gap:18px; flex-wrap:wrap; margin-bottom:16px; }
+.checklist__title { font-weight:800; font-size:clamp(1rem,.9rem + .8vw,1.35rem); line-height:1.8; margin-top:6px; max-width:36ch; }
+.checklist__meter { display:flex; align-items:center; gap:14px; flex:0 0 auto; }
+.checklist__count { font-size:1.05rem; color:var(--ink-2); }
+.checklist__count b { font-weight:900; font-size:1.5rem; color:var(--acc); font-variant-numeric:tabular-nums; }
+.checklist__bar { width:110px; height:6px; border-radius:99px; background:rgba(148,196,214,.14); overflow:hidden; }
+.checklist__bar i { display:block; height:100%; width:0%; border-radius:99px; background:linear-gradient(90deg, var(--acc), var(--dp-pine, #1f7461)); transition:width .45s var(--fx); }
+.checklist__items { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr)); gap:9px; }
+.checklist__items label {
+  display:flex; gap:12px; align-items:flex-start; cursor:pointer; user-select:none;
+  padding:13px 15px; border-radius:var(--r-md); border:1px solid var(--line); background:rgba(6,11,21,.55);
+  transition:border-color .25s, background .25s, opacity .25s;
+}
+.checklist__items label:hover { border-color:rgba(7,200,218,.45); }
+.checklist__items input { position:absolute; opacity:0; pointer-events:none; }
+.ckbox { flex:0 0 auto; width:22px; height:22px; border-radius:7px; border:2px solid rgba(148,196,214,.4); margin-top:.15em;
+  display:grid; place-items:center; transition:all .25s var(--fx); }
+.cktxt { font-size:.88rem; line-height:1.9; color:var(--ink-2); }
+.cktxt b { color:var(--acc); font-weight:800; margin-inline-end:6px; }
+.checklist__items input:checked ~ .ckbox { background:var(--green); border-color:var(--green); box-shadow:0 0 12px rgba(16,185,129,.45); }
+.checklist__items input:checked ~ .ckbox::after {
+  content:""; width:6px; height:11px; border:0 solid #04130d; border-width:0 2.6px 2.6px 0; transform:rotate(42deg) translateY(-1px);
+}
+.checklist__items input:checked ~ .cktxt { color:var(--ink-3); text-decoration:line-through; text-decoration-color:rgba(16,185,129,.6); }
+.checklist__items input:focus-visible ~ .ckbox { outline:2px solid var(--acc); outline-offset:3px; }
+.checklist.is-full .checklist__bar i { background:linear-gradient(90deg, var(--green), var(--acc)); }
+
+/* — دعوت به همکاری — */
+.wrapup__collab { max-width:52ch; margin:18px auto 0; font-size:.86rem; color:var(--ink-2); line-height:2;
+  padding:12px 18px; border-radius:var(--r-md); border:1px dashed rgba(245,158,11,.4); background:rgba(245,158,11,.05); }
+.wrapup__collab b { color:var(--amber); font-weight:800; }
+
+/* — چاپ (fallback: همه صحنه‌ها پشت‌سرهم) — */
+@media print {
+  body { background:#fff; color:#111; }
+  .site-nav, .deck-topbar, .deck-bottombar, .deck-sweep, .wrapup__cta, .end-cta, .modal, .toast, #ckReset, #exportCsv, .wp-mock__dots { display:none !important; }
+  .deck, .deck-stage { height:auto; position:static; background:#fff; }
+  .deck-stage::before, .scene--cover::before { display:none; }
+  .deck-scenes { position:static; inset:auto; }
+  .scene { position:static; opacity:1 !important; filter:none !important; transform:none !important; visibility:visible !important; padding:18px 0; break-inside:avoid; border-bottom:1px solid #ddd; }
+  .scene-fit { transform:none !important; width:100%; }
+  .stg { opacity:1 !important; transform:none !important; }
+  .act2 { background:#fff; color:#111; }
+  .modal, .toast { display:none !important; }
+}
+
 /* ═══ واکنش‌گرایی ═══ */
 @media (max-width:760px) {
   :root { --top:84px; --bot:104px; }
@@ -672,7 +725,7 @@ img,svg { display:block; max-width:100%; }
   .modal__foot .btn { flex:1; }
 }
 @media (max-width:460px) {
-  body { font-size:15px; }
+  body { font-size:16px; }
   .end-cta { flex-direction:column; width:100%; }
   .end-cta .btn { width:100%; }
 }
