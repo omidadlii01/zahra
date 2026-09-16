@@ -407,13 +407,29 @@ if (CFG.deepLink) {
   window.addEventListener('hashchange', deepFromUrl);
 }
 
-/* ۷) لینک‌های کانال */
+/* ۷) گرم‌کردن اتصال فقط وقتی کاربر روی «پخش» رفت (هوش مصنوعیِ بارگذاری: صفر هزینه در لود) */
+var preDone = false;
+function preconnect() {
+  if (preDone) return;
+  preDone = true;
+  try {
+    var l = doc.createElement('link');
+    l.rel = 'preconnect'; l.href = CFG.nocookie; l.setAttribute('crossorigin', 'anonymous');
+    doc.head.appendChild(l);
+  } catch (e) {}
+}
+$$('[data-yt], [data-yt-all]').forEach(function (el) {
+  el.addEventListener('pointerenter', preconnect);
+  el.addEventListener('focus', preconnect);
+});
+
+/* ۸) لینک‌های کانال */
 var more = $('#ytChanMore');
 if (more) more.setAttribute('href', CFG.channel + '/videos');
 var sub = $('#ytChanSub');
 if (sub) sub.setAttribute('href', CFG.channel + '?sub_confirmation=1');
 
-/* ۸) دکمهٔ صحنهٔ پایانی دک: پرش به بخش ویدیوها */
+/* ۹) دکمهٔ صحنهٔ پایانی دک: پرش به بخش ویدیوها */
 var endBtn = $('#endVideos');
 if (endBtn && $('#media')) {
   endBtn.addEventListener('click', function (e) {
